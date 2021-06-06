@@ -1,0 +1,19 @@
+<div class="player-container" id="main-container">
+    <div class="row">
+      <div *ngFor="let junior of juniors$" class="col-md-6 col-xl-3">
+         <div class="card m-b-30">
+            <div class="card-body row">
+               <div class="col-6 card-title align-self-center mb-0">
+                  <h5>{{junior?.name}}</h5>
+               </div>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><i class="fa fa-times-circle-o float-right"></i>Pozitie: {{junior?.position}}</li>
+             </ul>
+            <ul class="list-group list-group-flush">
+               <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Picior: {{junior?.foot}}</li>
+            </ul>
+            </div>
+            </div>
+    </div>
+    </div>

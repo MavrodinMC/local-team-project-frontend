@@ -1,0 +1,27 @@
+<div class="login-box">
+    <h1>Login</h1>
+    <div>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="textbox">
+            <i class="fa fa-user icon" aria-hidden="true"></i>
+        <input type="text" placeholder="Username" class="form-control" [formControlName]="'username'" required autofocus>
+        <span *ngIf="!loginForm.get('username').valid && loginForm.get('username').touched">Please provide a valid username</span>
+    </div>
+    <div class="textbox">
+        <i class="fa fa-lock icon" aria-hidden="true"></i>
+        <input type="password" placeholder="Password"
+        class="form-control" [formControlName]="'password'" name="password" required>
+        <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">Password cannot be empty</span>
+    </div>
+
+    
+    <input class="btn" type="submit" name="" value="Sign in">
+    <div class="login-failed" *ngIf='this.isError'>
+        <p class="login-failed-text">Login failed. Please check your credentials and try again.</p>
+    </div>
+    <div [ngStyle]="{'background-color': 'green'}" *ngIf="registerSuccesMessage && this.registerSuccesMessage.length > 0">
+        <p class="register-success-text">{{registerSuccesMessage}}</p>   
+   </div>        
+</form>
+</div>
+

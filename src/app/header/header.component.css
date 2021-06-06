@@ -1,0 +1,310 @@
+
+.login{    
+    background-color:transparent;
+    border-color: #090e13;
+    color: #030a0f;
+    border: 1px solid;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    line-height: 24px;
+    text-transform: uppercase;
+    padding: 3px 16px;
+    opacity: 1;  
+}
+
+.login:hover {
+    height: 180%;
+    color: black;
+    background-color: yellowgreen;
+}
+
+/* :root{
+    --primary-color: rgba(28, 219, 54, 0.75);
+    --overlay-color: rgba(24,39,51,0.85);
+    --menu-speed: 0.75s;
+} */
+
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    font-family:'Roboto', sans-serif;
+    line-height: 1.4;
+}
+
+
+
+.container {
+    max-width: 960px;
+    margin:auto;
+    overflow: hidden;
+    padding:0 3rem;
+}
+
+.login-btn a{
+    color:white;
+    background-color:rgba(9, 194, 40, 0.45);
+    position:absolute;
+    top: 0;
+    right: 120;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.logout-btn a{
+    color:white;
+    background-color:rgba(9, 194, 40, 0.45);
+    position:absolute;
+    top: 0;
+    right:40;
+    z-index: 1;
+    width: 70px;
+    height: 60px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.logout-btn a:hover{
+    color:black;
+}
+
+.login-btn a:hover {
+  color:black;
+}
+
+/* background-color: transparent;
+    border-color: #0a1218;
+    color: #0079D3;
+    fill: #0079D3;
+    border: 1px solid;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    line-height: 24px;
+    text-transform: uppercase;
+    padding: 3px 16px;
+    opacity: 1;  
+    
+    position:absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    background: rgba(9, 194, 40, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;*/
+
+.showcase{
+   width: 100%;
+   height: 60px;
+   display: block;
+   position: relative;
+   background-color: rgba(103, 238, 126, 0.774);
+}
+
+/* .showcase::before {
+    content:'';
+    background:url(E:\local-team-project\src\img\football10.jpg) no-repeat center center/cover;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100%;
+    z-index: -1;
+} */
+
+.showcase .showcase-inner {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+
+.showcase h1 {
+    font-size: 4rem;
+}
+
+.menu-wrap {
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 1;
+}
+
+.menu-wrap .toggler {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index: 2;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+}
+
+.menu-wrap .hamburger {
+    position:absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    background: rgba(9, 194, 40, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hamburger line */
+
+.menu-wrap .hamburger > div {
+    position:relative;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+/* Top and bottom lines */
+.menu-wrap .hamburger > div::before,
+.menu-wrap .hamburger > div::after {
+    content:'';
+    position:  absolute;
+    z-index: 1;
+    top: -10px;
+    width: 100%;
+    height: 2px;
+    background: inherit;
+}
+
+/* Moves line down */
+.menu-wrap .hamburger > div::after {
+    top: 10px;
+}
+
+/* Toggler animate */
+.menu-wrap .toggler:checked + .hamburger > div {
+    transform: rotate(135deg);
+}
+
+/* Turn lines into X */
+.menu-wrap .toggler:checked + .hamburger > div::before,
+.menu-wrap .toggler:checked + .hamburger > div::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+/* Rotate on hover when checked */
+.menu-wrap .toggler:checked:hover + .hamburger > div{
+    transform: rotate(225deg);
+}
+
+/* Show menu */
+.menu-wrap .toggler:checked ~ .menu {
+    visibility: visible;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div {
+    transform: scale(1);
+    transition-duration: 0.75s;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div > div {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-wrap .menu > div {
+    background: rgba(86, 201, 106, 0.85);
+    border-radius: 50%;
+    width: 200vw;
+    height: 200vw;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: all 0.4s ease;
+}
+
+.menu-wrap .menu > div > div {
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+
+.menu-wrap .menu > div > div > ul > li {
+    list-style: none;
+    color: black;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.menu-wrap .menu > div > div > ul > li > a {
+    color: inherit;
+    text-decoration:none;
+    transition: color 0.4 ease;
+}
+
+.menu-wrap .menu > div > div > ul > li > a:hover {
+    color:white;
+}
+
+
+
+
