@@ -10,12 +10,12 @@ import { PlayerService } from 'src/app/auth/login/shared/player.service';
 export class JuniorPlayersComponent implements OnInit {
 
   juniors$: Player[];
-  isSenior: boolean = false;
+  senior: boolean = false;
 
   constructor(private playerService: PlayerService) { }
 
   ngOnInit() {
-    this.getAllJuniors(this.isSenior);
+    this.getAllJuniors(this.senior);
   }
 
   getAllJuniors(isSenior:boolean): void {
