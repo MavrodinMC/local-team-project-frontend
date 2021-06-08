@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Player } from '../auth/login/shared/player';
+import { PlayerService } from '../auth/login/shared/player.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +10,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  msg: boolean = false;
+  @Input() ngValue: boolean;
 
-  constructor() { }
+  constructor(private playerService: PlayerService) { }
 
   ngOnInit(): void {
   }
- 
+
+  public onAddPlayer(addForm: NgForm): void {
+    document.getElementById('add-player-form')!.click();
+    this.playerService.addPlayer(addForm.value).subscribe(
+      (response: Player) => {
+        addForm.reset();
+        this.msg = true;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
+    );
+  }
+
+  public onOpenModal(player: Player, mode: string): void {
+    const container = document.getElementById('btn-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    if(mode === 'add') {
+      button.setAttribute('data-target', '#addPlayerModal');
+    }
+    container.appendChild(button);
+    button.click();
+}
 }

@@ -4,6 +4,10 @@ input.ng-invalid {
     border: 1px solid red;
 }
 
+h1 {
+    font-family:'Courier New', Courier, monospace ;
+}
+
 body::before{
         content:'';
         background:url(E:\local-team-project\src\img\soccer1.jpg) no-repeat center center/cover;

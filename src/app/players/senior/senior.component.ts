@@ -11,15 +11,12 @@ import { PlayerService} from '../../auth/login/shared/player.service';
 })
 export class SeniorComponent implements OnInit {
 
-
-  msg:boolean = false;
   deleteMsg: boolean = false;
   updateMsg: boolean = false;
   seniors$: Player[];
   public editSenior: Player;
   public deleteSenior: Player;
   isSenior = true;
-  @Input() ngValue: boolean;
   
   constructor(private playerService: PlayerService) {
    }
@@ -32,22 +29,6 @@ export class SeniorComponent implements OnInit {
     this.playerService.getAllPlayers(isSenior).subscribe((senior: Player[]) => {
       this.seniors$ = senior;
     });
-  }
-
-  public onAddSenior(addForm: NgForm): void {
-    document.getElementById('add-senior-form')!.click();
-    this.playerService.addPlayer(addForm.value).subscribe(
-      (response: Player) => {
-        console.log(response);
-        this.getAllSeniors(this.isSenior);
-        addForm.reset();
-        this.msg = true;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-        addForm.reset();
-      }
-    );
   }
 
   public onUpdatePlayer(player: Player): void {
@@ -81,9 +62,6 @@ export class SeniorComponent implements OnInit {
     button.type = 'button';
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
-    if(mode === 'add') {
-      button.setAttribute('data-target', '#addSeniorModal');
-    }
     if(mode === 'edit') {
       this.editSenior = player;
       button.setAttribute('data-target', "#updateSeniorModal");

@@ -32,7 +32,7 @@
 }
 
 .textbox input {
-    border: none;
+    border: 1px solid #4caf50;
     outline: none;
     background: none;
     color:white;
