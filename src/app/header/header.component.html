@@ -1,5 +1,6 @@
 <head>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+   <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.css" rel="stylesheet"/>
    </head>
 <div class="add-btn"v id="btn-container">
     <button type="button" (click)="onOpenModal(null!, 'add')">Add Player 
@@ -37,11 +38,6 @@
        </div>
     </div>
 </header>
-
-<div *ngIf="msg" class="alert alert-success" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <strong>Player Added Succesfully!</strong>
-  </div>
 
 <!-- Add Player Modal -->
 

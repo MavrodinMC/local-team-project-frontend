@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr copy';
 import { Player } from '../../auth/login/shared/player';
 import { PlayerService} from '../../auth/login/shared/player.service';
 
@@ -11,14 +12,12 @@ import { PlayerService} from '../../auth/login/shared/player.service';
 })
 export class SeniorComponent implements OnInit {
 
-  deleteMsg: boolean = false;
-  updateMsg: boolean = false;
   seniors$: Player[];
   public editSenior: Player;
   public deleteSenior: Player;
   isSenior = true;
   
-  constructor(private playerService: PlayerService) {
+  constructor(private playerService: PlayerService, private toastr: ToastrService) {
    }
 
   ngOnInit() {
@@ -35,7 +34,7 @@ export class SeniorComponent implements OnInit {
     this.playerService.updatePlayer(player).subscribe(
       (response: Player) => {
         this.getAllSeniors(this.isSenior);
-        this.updateMsg = true;
+        this.toastr.success("Played edited succesfully.")
       }, 
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -48,7 +47,7 @@ export class SeniorComponent implements OnInit {
       (response: void) => {
         console.log(response);
         this.getAllSeniors(this.isSenior);
-        this.deleteMsg = true;
+        this.toastr.error("Player deleted!")
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

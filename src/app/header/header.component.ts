@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr copy';
 import { Player } from '../auth/login/shared/player';
 import { PlayerService } from '../auth/login/shared/player.service';
 
@@ -10,10 +11,9 @@ import { PlayerService } from '../auth/login/shared/player.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  msg: boolean = false;
   @Input() ngValue: boolean;
 
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
     this.playerService.addPlayer(addForm.value).subscribe(
       (response: Player) => {
         addForm.reset();
-        this.msg = true;
+        this.toastr.success("Player added succesfully.")
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

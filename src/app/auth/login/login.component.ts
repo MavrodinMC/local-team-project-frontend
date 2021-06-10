@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginRequestPayload: LoginRequestPayload;
   isError: boolean;
-  registerSuccesMessage: string;
   isLoggedIn: boolean;
 
 
@@ -44,11 +43,12 @@ export class LoginComponent implements OnInit {
     .subscribe(data => {
       if(data) {
         this.isError = false;
-        this.router.navigateByUrl('senior');
-        this.toastr.success('Login Succesful');
+        this.router.navigateByUrl('');
+        this.toastr.success("Login succesfull");
         this.isLoggedIn = true;
       } else {
         this.isError = true;
+        this.toastr.error("Login failed. Check your credentials and try again.")
         this.isLoggedIn = false;
       }
     })
