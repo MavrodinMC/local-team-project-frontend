@@ -13,15 +13,13 @@ export class LogoutComponent implements OnInit {
   constructor(private authService: AuthService,
     private router:Router, private toastr: ToastrService) { }
 
-  isLoggedIn: boolean;
-
   ngOnInit(): void {
   }
 
   logout() {
     this.authService.logout;
     this.router.navigateByUrl('');
-    this.toastr.success('Logout Succesful');
+    this.toastr.success('You were logged out.');
   }
 
 }

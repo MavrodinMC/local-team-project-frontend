@@ -1,5 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr copy';
 import { Player } from 'src/app/auth/login/shared/player';
 import { PlayerService } from 'src/app/auth/login/shared/player.service';
 
@@ -12,12 +14,10 @@ export class JuniorPlayersComponent implements OnInit {
 
   juniors$: Player[];
   senior: boolean = false;
-  deleteMsg: boolean = false;
-  updateMsg: boolean = false;
   public editJunior: Player;
   public deleteJunior: Player;
 
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getAllJuniors(this.senior);
@@ -33,7 +33,7 @@ export class JuniorPlayersComponent implements OnInit {
     this.playerService.updatePlayer(player).subscribe(
       (response: Player) => {
         this.getAllJuniors(this.senior);
-        this.updateMsg = true;
+        this.toastr.success("Played edited succesfully.")
       }, 
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -46,7 +46,8 @@ export class JuniorPlayersComponent implements OnInit {
       (response: void) => {
         console.log(response);
         this.getAllJuniors(this.senior);
-        this.deleteMsg = true;
+        this.toastr.error("Player deleted!")
+        
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
