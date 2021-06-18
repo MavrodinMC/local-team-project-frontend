@@ -1,4 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
+import { mergeAnalyzedFiles } from '@angular/compiler';
+import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr copy';
