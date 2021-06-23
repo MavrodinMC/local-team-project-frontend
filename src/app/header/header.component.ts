@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
     this.playerService.addPlayer(addForm.value).subscribe(
       (response: Player) => {
         addForm.reset();
-        this.toastr.success("Player added succesfully.")
+        this.toastr.success("Player added succesfully.");
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

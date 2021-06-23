@@ -5,13 +5,15 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { HomeComponent } from './home/home.component';
 import { JuniorPlayersComponent } from './players/junior/junior-players/junior-players.component';
 import { SeniorComponent } from './players/senior/senior.component';
+import { TournamentComponent } from './tournament/tournament.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path:'senior', component: SeniorComponent},
   {path:'login', component: LoginComponent},
   {path:'logout', component: LogoutComponent},
-  {path:'junior', component: JuniorPlayersComponent}
+  {path:'junior', component: JuniorPlayersComponent},
+  {path:'tournament', component: TournamentComponent}
 ];
 
 @NgModule({
