@@ -16,6 +16,7 @@ import {RouterModule} from '@angular/router';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { JuniorPlayersComponent } from './players/junior/junior-players/junior-players.component';
 import { PlayerService } from './auth/login/shared/player.service';
+import { TournamentComponent } from './tournament/tournament.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PlayerService } from './auth/login/shared/player.service';
     HomeComponent,
     SeniorComponent,
     LogoutComponent,
-    JuniorPlayersComponent
+    JuniorPlayersComponent,
+    TournamentComponent
   ],
   imports: [
     BrowserModule,
