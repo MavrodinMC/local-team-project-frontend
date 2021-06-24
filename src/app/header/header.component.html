@@ -1,13 +1,10 @@
-<script>
-
-</script>
 
 <head>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.css" rel="stylesheet"/>
    </head>
 <div class="add-btn"v id="btn-container">
-    <button type="button" (click)="onOpenModal(null!, 'add')">Add Player 
+    <button type="button" (click)="onOpenModal(null!, 'add')">Adauga jucator 
        <span class="sr-only">(current)</span>
     </button>
   </div>
@@ -79,7 +76,7 @@
             </div>
             <div class="modal-footer">
                <button type="button" id="add-player-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-               <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Add Player</button>
+               <button [disabled]="addForm.invalid" id="add-player" type="submit" class="btn btn-primary" >Adauga</button>
             </div>
             </form>
          </div>

@@ -7,6 +7,10 @@ ol:hover {
    color:white;
 }
 
+.form-group input {
+    border: 1px solid black;
+}
+
 button {
     all: unset;
     padding:0.3em 1.2em;
@@ -17,7 +21,7 @@ button {
     box-sizing: border-box;
     text-decoration: none;
     font-family:'Roboto', sans-serif;
-    font-weight: 300;
+    font-weight: 500;
     color: black;
     text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
     text-align: center;
@@ -26,6 +30,10 @@ button {
 }
 button:hover {
     border-color: white;
+}
+
+#add-tournament:disabled {
+cursor: not-allowed;
 }
 
 #btn-container {
