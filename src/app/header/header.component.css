@@ -107,7 +107,6 @@ body {
     position:fixed;
     top: 10px;
     right: 200;
-    z-index: 1;
     display: flex;
     margin:0 0.1em 0.1em 0;
     margin-left: 150px;
@@ -161,7 +160,6 @@ body {
     position:fixed;
     top: 10px;
     right: 100;
-    z-index: 1;
     display: flex;
     margin:0 0.1em 0.1em 0;
     margin-left: 150px;

@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { mergeAnalyzedFiles } from '@angular/compiler';
+import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
