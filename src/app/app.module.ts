@@ -17,6 +17,7 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { JuniorPlayersComponent } from './players/junior/junior-players/junior-players.component';
 import { PlayerService } from './auth/login/shared/player.service';
 import { TournamentComponent } from './tournament/tournament.component';
+import { ViewtournamentComponent } from './tournament/viewtournament/viewtournament.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TournamentComponent } from './tournament/tournament.component';
     SeniorComponent,
     LogoutComponent,
     JuniorPlayersComponent,
-    TournamentComponent
+    TournamentComponent,
+    ViewtournamentComponent
   ],
   imports: [
     BrowserModule,

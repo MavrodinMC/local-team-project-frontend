@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { JuniorPlayersComponent } from './players/junior/junior-players/junior-players.component';
 import { SeniorComponent } from './players/senior/senior.component';
 import { TournamentComponent } from './tournament/tournament.component';
+import { ViewtournamentComponent } from './tournament/viewtournament/viewtournament.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'logout', component: LogoutComponent},
   {path:'junior', component: JuniorPlayersComponent},
-  {path:'tournament', component: TournamentComponent}
+  {path:'tournament', component: TournamentComponent},
+  {path:'view', component: ViewtournamentComponent}
 ];
 
 @NgModule({

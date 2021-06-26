@@ -38,6 +38,7 @@
 
 #add-player-form:hover,
 #add-player:hover {
+
     border-color: white;
 }
 
@@ -151,6 +152,8 @@ body {
     cursor: pointer;
 }
 .add-btn button:hover {
+    color:white;
+    background-color: black;
     border-color: white;
 }
 

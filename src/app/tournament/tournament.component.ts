@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TournamentService } from '../auth/login/shared/tournament.service';
 import { ToastrService } from 'ngx-toastr copy';
 import { Tournament } from '../auth/login/shared/tournament';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-tournament',
@@ -17,7 +16,7 @@ export class TournamentComponent implements OnInit {
   tournaments: Tournament[];
   tournament: Tournament;
 
-  constructor(private tournamentService: TournamentService, private toastr: ToastrService, private route: ActivatedRoute) { }
+  constructor(private tournamentService: TournamentService, private toastr: ToastrService, private route: Router) { }
 
   ngOnInit(): void {
     this.getAllTournaments();
@@ -27,14 +26,6 @@ export class TournamentComponent implements OnInit {
       this.tournamentService.getAllTournaments().subscribe((tournament: Tournament[]) => {
          this.tournaments = tournament;
       });
-  }
-
-  getOne(id): void {
-    this.tournamentService.getOneById(id).subscribe(
-      (data: Tournament) => {
-        this.toastr.error('Nu exista meciuri pentru acest campionat.')
-      }
-    )
   }
 
   public onAddTournament(addForm: NgForm): void {
@@ -50,6 +41,10 @@ export class TournamentComponent implements OnInit {
         addForm.reset();
       }
     );
+  }
+
+  goToViewTournament(id: number) {
+    this.route.navigate(['view'], {queryParams: { tournamentId: id}});
   }
 
   public onOpenModal(tournament: Tournament, mode: string): void {

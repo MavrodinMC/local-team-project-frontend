@@ -1,4 +1,4 @@
 export class Tournament {
-    id: number;
+    id: any;
     name: string;
 }
