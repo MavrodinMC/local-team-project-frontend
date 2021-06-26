@@ -13,23 +13,15 @@ export class TournamentService {
   constructor(private httpClient: HttpClient) {
    }
 
-  //  httpOptionsPlain = {
-  //   headers: new HttpHeaders({
-  //     'Accept': 'text/plain',
-  //     'Content-Type': 'text/plain'
-  //   }),
-  //   'responseType': 'text'
-  // };
-
 
   getAllTournaments(): Observable<Tournament[]> {
     return this.httpClient.get<Tournament[]>('http://localhost:8080/tournament/all')
   }
 
-  getOneById(id): Observable<Tournament> {
+  getOneById(tournamentId): Observable<Tournament> {
     let params = new HttpParams()
-    .set('tournamentId', id);
-    return this.httpClient.get<Tournament>(`http://localhost:8080/tournament`, {params: params});
+    .set('tournamentId', tournamentId);
+    return this.httpClient.get<any>(`http://localhost:8080/tournament/view`, {params: params});
   }
 
   addTournament(tournament: Tournament):Observable<Tournament>{

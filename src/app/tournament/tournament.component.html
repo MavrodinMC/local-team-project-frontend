@@ -2,7 +2,7 @@
     <div *ngFor="let tournament of tournaments">
         <div id="tournament-list">
             <ol>
-                <ul (click)="getOne(tournament.id)">{{tournament.name}}</ul>
+                <ul (click)="goToViewTournament(tournament.id)">{{tournament.name}}</ul>
             </ol>
          </div>
     </div>
