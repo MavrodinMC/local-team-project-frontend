@@ -27,4 +27,12 @@ export class TournamentService {
   addTournament(tournament: Tournament):Observable<Tournament>{
     return this.httpClient.post<Tournament>(`http://localhost:8080/tournament/add`, tournament);
   }
+
+  updateTournament(tournament: Tournament): Observable<Tournament> {
+    return this.httpClient.put<Tournament>(`http://localhost:8080/tournament/update`, tournament);
+  }
+
+  deleteTournament(tournamentId: number): Observable<void> {
+    return this.httpClient.delete<void>(`http://localhost:8080/tournament/delete/${tournamentId}`);
+}
 }

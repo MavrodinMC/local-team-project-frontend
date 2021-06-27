@@ -33,8 +33,8 @@ export class TournamentComponent implements OnInit {
     this.tournamentService.addTournament(addForm.value).subscribe(
       (response: Tournament) => {
         addForm.reset();
-        this.toastr.success("Competitie adaugata cu succes!.")
         this.getAllTournaments();
+        this.toastr.success("Competitie adaugata cu succes!")
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
