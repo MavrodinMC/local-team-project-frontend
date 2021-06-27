@@ -126,6 +126,8 @@ body {
 }
 
 .login-btn a:hover {
+    background-color: black;
+    color:white;
     border-color: white;
 }
 
