@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Game } from './game';
 import { Tournament } from './tournament';
 
 @Injectable({
@@ -22,6 +23,11 @@ export class TournamentService {
     let params = new HttpParams()
     .set('tournamentId', tournamentId);
     return this.httpClient.get<any>(`http://localhost:8080/tournament/view`, {params: params});
+  }
+
+  addGameToATournament(tournamentId, game: Game): Observable<Game> {
+  
+    return this.httpClient.post<Game>(`http://localhost:8080/tournament/game/${tournamentId}`, game);
   }
 
   addTournament(tournament: Tournament):Observable<Tournament>{

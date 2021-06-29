@@ -1,14 +1,14 @@
 <div id = "view-tournament">
   <h3>
-      {{tournament.name}}
+      {{tournament?.name}}
   </h3>
 
   <button id="back-btn" type="button" class="btn btn-primary" (click)="goToList()">Inapoi</button>
 
   <div class="card-body">
     <div class="float-center btn-group btn-group-sm">
-       <a (click)="onOpenModal(tournament, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-       <a (click)="onOpenModal(tournament, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+       <a (click)="onOpenModal(tournament, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit" title="Edit"><i class="fa fa-pencil"></i> </a>
+       <a (click)="onOpenModal(tournament, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete" title="Delete"><i class="fa fa-times"></i></a>
     </div>
   </div>
   
@@ -63,4 +63,68 @@
      </div>
   </div>
 </div>
-             
+
+<div class="button" id="btn-container">
+  <button type="button" (click)="onOpenGameModal(null!, 'add')">Adauga meci. 
+     <span class="sr-only">(current)</span>
+  </button>
+</div>
+
+<!-- Add Game Modal -->
+
+<div class="modal fade" id="addGameModal" tabindex="-1" role="dialog" aria-labelledby="addGameModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       <div class="modal-header">
+          <h5 class="modal-title" id="addGameModalLabel">Adauga Meci</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+       </div>
+       <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddGame(tournament.id, addForm)">
+            <div class="form-group">
+              <label for="date">Data Meciului</label>
+              <input type="text" ngModel name="date" class="form-control"
+               id="date" required>
+           </div>
+           <div class="form-group">
+            <label for="location">Locatie</label>
+            <input type="text" ngModel name="location" class="form-control"
+             id="location" required>
+         </div>
+         <div class="form-group">
+          <label for="homeTeam">Gazda</label>
+          <input type="text" ngModel name="homeTeam" class="form-control"
+           id="gomeTeam" required>
+       </div>
+       <div class="form-group">
+        <label for="awayTeam">Oaspeti</label>
+        <input type="text" ngModel name="awayTeam" class="form-control"
+         id="awayTeam" required>
+     </div>
+   <div class="form-group">
+    <label for="referee">Arbitru Central</label>
+    <input type="text" ngModel name="referee" class="form-control"
+     id="referee" required>
+ </div>
+          <div class="modal-footer">
+             <button type="button" id="add-game-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             <button [disabled]="addForm.invalid" id="add-game" type="submit" class="btn btn-primary" >Adauga</button>
+          </div>
+          </form>
+       </div>
+    </div>
+  </div>
+  </div>
+
+<!-- Notification for no games. -->
+<div *ngFor="let tournament of tournaments">
+   <div *ngIf="tournament.games.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+      <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">No games.</h4>
+        <p>No games were found.</p>
+      </div>
+      </div>
+</div>
+

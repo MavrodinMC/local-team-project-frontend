@@ -5,6 +5,8 @@ import { Tournament } from 'src/app/auth/login/shared/tournament';
 import { TournamentService } from 'src/app/auth/login/shared/tournament.service';
 import { ToastrService } from 'ngx-toastr copy';
 import { TemplateBindingParseResult } from '@angular/compiler';
+import { Game } from 'src/app/auth/login/shared/game';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-viewtournament',
@@ -13,10 +15,13 @@ import { TemplateBindingParseResult } from '@angular/compiler';
 })
 export class ViewtournamentComponent implements OnInit {
 
+  tournaments: Tournament[];
   tournament: Tournament;
   id: number;
   public editTournament: Tournament;
   public deleteTournament: Tournament;
+  game: Game;
+  tournamentId: number;
 
   constructor(private tournamentService: TournamentService, private activatedRoute: ActivatedRoute, private route: Router, private toastr: ToastrService) { }
 
@@ -36,8 +41,25 @@ export class ViewtournamentComponent implements OnInit {
     );
   }
 
+
   goToList() {
     this.route.navigate(['tournament']);
+  }
+
+  onAddGame(tournamentId, addForm: NgForm): void {
+    document.getElementById('add-game-form')!.click();
+    this.tournamentService.addGameToATournament(tournamentId, addForm.value).subscribe(
+      data => {
+        this.toastr.success("Meci salvat cu succes.");
+        addForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+
+         alert(error.message);
+         addForm.reset();
+         
+      }
+    );
   }
 
   onUpdateTournament(tournament: Tournament): void {
@@ -77,6 +99,19 @@ export class ViewtournamentComponent implements OnInit {
     if(mode === 'delete') {
       this.deleteTournament = tournament;
       button.setAttribute('data-target', '#deleteTournamentModal');
+    }
+    container.appendChild(button);
+    button.click();
+  }
+
+  public onOpenGameModal(game: Game, mode: string): void {
+    const container = document.getElementById('view-tournament');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    if(mode === 'add') {
+      button.setAttribute('data-target', '#addGameModal');
     }
     container.appendChild(button);
     button.click();
