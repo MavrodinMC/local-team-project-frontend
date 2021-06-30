@@ -30,6 +30,10 @@ export class TournamentService {
     return this.httpClient.post<Game>(`http://localhost:8080/tournament/game/${tournamentId}`, game);
   }
 
+  getGamesList(tournamentId: number): Observable<any> {
+    return this.httpClient.get<any>(`http://localhost:8080/tournament/gameList/${tournamentId}`);
+  }
+
   addTournament(tournament: Tournament):Observable<Tournament>{
     return this.httpClient.post<Tournament>(`http://localhost:8080/tournament/add`, tournament);
   }

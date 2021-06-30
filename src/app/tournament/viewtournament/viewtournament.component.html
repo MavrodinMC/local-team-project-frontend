@@ -64,8 +64,8 @@
   </div>
 </div>
 
-<div class="button" id="btn-container">
-  <button type="button" (click)="onOpenGameModal(null!, 'add')">Adauga meci. 
+<div class="button">
+  <button type="button" id="view-add-btn" (click)="onOpenGameModal(null!, 'add')">Adauga meci 
      <span class="sr-only">(current)</span>
   </button>
 </div>
@@ -118,13 +118,17 @@
   </div>
   </div>
 
-<!-- Notification for no games. -->
-<div *ngFor="let tournament of tournaments">
-   <div *ngIf="tournament.games.length == 0" class="col-lg-12 col-md-12 col-xl-12">
-      <div class="alert alert-info" role="alert">
-        <h4 class="alert-heading">No games.</h4>
-        <p>No games were found.</p>
-      </div>
-      </div>
-</div>
+  <div *ngFor="let game of games" id="game-list">
+      <h6>
+         {{game?.homeTeam}} - {{game?.awayTeam}}
+      </h6>
+  </div>
+
+  <!-- Notification for no games in a tournament -->
+  
+  <div *ngIf="games?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+   <div class="alert alert-info" role="alert">
+     <p>Nu exista inca meciuri inregistrate pentru acest campionat.</p>
+   </div>
+   </div>
 

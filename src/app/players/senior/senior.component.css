@@ -2,6 +2,10 @@
     border: 1px solid black;
 }
 
+.alert {
+    width: 40%;
+}
+
 button {
     all: unset;
     padding:0.3em 1.2em;

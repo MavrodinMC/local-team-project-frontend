@@ -81,3 +81,50 @@
     border-color: white;
     color:white;
 }
+
+button {
+    all: unset;
+    padding:0.3em 1.2em;
+    margin:0 0.1em 0.1em 0;
+    border:0.16em solid rgba(255, 255, 255, 0);
+    background-color: rgb(80, 255, 188);
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family:'Roboto', sans-serif;
+    font-weight: 500;
+    color: black;
+    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+#view-add-btn {
+    position: absolute;
+    top: 100px;
+    right: 50px
+}
+
+#add-game:disabled {
+    cursor: not-allowed;
+}
+
+#game-list {
+    color:white;
+    padding-top: 5px;
+    padding-left: 60px;
+    color: rgb(74, 243, 243);
+    text-align:left;
+}
+
+.alert {
+    width: 40%;
+}
+
+#view-add-btn:hover {
+   background-color: black;
+   color: white;
+   border-color: white;
+}
+

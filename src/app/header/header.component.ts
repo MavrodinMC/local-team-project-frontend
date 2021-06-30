@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private playerService: PlayerService, private toastr: ToastrService) { }
 
+
   ngOnInit(): void {
   }
 
