@@ -6,4 +6,5 @@ export interface Game {
     awayTeam: string | any;
     score: string | any;
     referee: string | any;
+
 }

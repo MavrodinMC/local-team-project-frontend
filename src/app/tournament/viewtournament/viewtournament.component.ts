@@ -16,6 +16,7 @@ import { NgForm } from '@angular/forms';
 export class ViewtournamentComponent implements OnInit {
 
   tournaments: Tournament[];
+  games: Game[];
   tournament: Tournament;
   id: number;
   public editTournament: Tournament;
@@ -29,15 +30,23 @@ export class ViewtournamentComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       const tournamentId = params['tournamentId'];
       this.id = tournamentId;
-    })
+    });
     this.tournamentService.getOneById(this.id).subscribe(
       data => {
         this.tournament = data;
       },
       (error: HttpErrorResponse) => {
          alert(error.message);
-         
       }
+    );
+    this.tournamentService.getGamesList(this.id).subscribe (
+      data => {
+        this.games = data;
+        console.log(this.games);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+     }
     );
   }
 
@@ -47,9 +56,11 @@ export class ViewtournamentComponent implements OnInit {
   }
 
   onAddGame(tournamentId, addForm: NgForm): void {
+    
     document.getElementById('add-game-form')!.click();
     this.tournamentService.addGameToATournament(tournamentId, addForm.value).subscribe(
       data => {
+        console.log(data);
         this.toastr.success("Meci salvat cu succes.");
         addForm.reset();
       },
