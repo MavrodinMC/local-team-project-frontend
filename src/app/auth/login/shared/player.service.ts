@@ -23,6 +23,13 @@ export class PlayerService{
           return this.http.get<Player[]>('http://localhost:8080/player', {params: params});
         }
         
+        getOneById(playerId): Observable<Player> {
+           let params = new HttpParams()
+           .set('playerId', playerId);
+
+           return this.http.get<Player>(`http://localhost:8080/player/view`, {params: params});
+        }
+
         addPlayer(player: Player):Observable<Player>{
             return this.http.post<Player>(`http://localhost:8080/player/add`, player)
         }

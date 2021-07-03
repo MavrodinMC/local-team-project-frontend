@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr copy';
 import { Player } from '../../auth/login/shared/player';
 import { PlayerService} from '../../auth/login/shared/player.service';
@@ -16,7 +17,7 @@ export class SeniorComponent implements OnInit {
   public deleteSenior: Player;
   isSenior = true;
   
-  constructor(private playerService: PlayerService, private toastr: ToastrService) {
+  constructor(private playerService: PlayerService, private toastr: ToastrService, private route: Router) {
    }
 
   ngOnInit() {
@@ -52,6 +53,10 @@ export class SeniorComponent implements OnInit {
         alert(error.message);
       }
     );
+  }
+
+  goToViewPlayer(id: number) {
+    this.route.navigate(['playerDetails'], {queryParams: { playerId: id}});
   }
    
   public onOpenModal(player: Player, mode: string): void {

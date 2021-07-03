@@ -44,7 +44,7 @@ export class TournamentComponent implements OnInit {
   }
 
   goToViewTournament(id: number) {
-    this.route.navigate(['view'], {queryParams: { tournamentId: id}});
+    this.route.navigate(['tournamentDetails'], {queryParams: { tournamentId: id}});
   }
 
   public onOpenModal(tournament: Tournament, mode: string): void {

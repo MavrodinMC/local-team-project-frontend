@@ -5,7 +5,7 @@
          <div class="card m-b-30">
             <div class="card-body row">
                <div class="col-6 card-title align-self-center mb-0">
-                  <h5>{{senior?.name}}</h5>
+                  <h5 id="view-senior" (click)="goToViewPlayer(senior.id)">{{senior?.name}}</h5>
                </div>
             </div>
             <ul class="list-group list-group-flush">

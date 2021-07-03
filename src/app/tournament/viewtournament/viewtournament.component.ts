@@ -42,7 +42,6 @@ export class ViewtournamentComponent implements OnInit {
     this.tournamentService.getGamesList(this.id).subscribe (
       data => {
         this.games = data;
-        console.log(this.games);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
