@@ -43,3 +43,7 @@ cursor: not-allowed;
     top: 100px;
     right: 50px
 }
+
+#btn-container .add-comp-btn {
+    outline: none;
+}
