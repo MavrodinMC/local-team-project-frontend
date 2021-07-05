@@ -101,6 +101,7 @@ button {
 }
 
 #view-add-btn {
+    outline: none;
     position: absolute;
     top: 100px;
     right: 50px

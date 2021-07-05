@@ -1,29 +1,19 @@
+<div class="senior-container" id="main-container">
+   <div *ngFor="let senior of seniors$">
+      <div class="main-div">
+               <h2>22</h2>
+               <h5 id="view-senior">{{senior?.name}}</h5>
+         <div class="card-body">
+            <div class="float-right btn-group btn-group-sm">
+               <a (click)="onOpenModal(senior, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit" title="Edit"><i class="fa fa-pencil"></i> </a>
+               <a (click)="onOpenModal(senior, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete" title="Delete"><i class="fa fa-times"></i></a>
+            </div>
+         </div>
+         <button class="details-btn" (click)="goToViewPlayer(senior?.id)">Detalii</button>
+         </div>
+      </div>
+   </div> 
 
-<div class="player-container" id="main-container">
-    <div class="row">
-      <div *ngFor="let senior of seniors$" class="col-md-6 col-xl-3">
-         <div class="card m-b-30">
-            <div class="card-body row">
-               <div class="col-6 card-title align-self-center mb-0">
-                  <h5 id="view-senior" (click)="goToViewPlayer(senior.id)">{{senior?.name}}</h5>
-               </div>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><i class="fa fa-times-circle-o float-right"></i>Pozitie: {{senior?.position}}</li>
-             </ul>
-            <ul class="list-group list-group-flush">
-               <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Picior: {{senior?.foot}}</li>
-            </ul>
-            <div class="card-body">
-               <div class="float-right btn-group btn-group-sm">
-                  <a (click)="onOpenModal(senior, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit" title="Edit"><i class="fa fa-pencil"></i> </a>
-                  <a (click)="onOpenModal(senior, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete" title="Delete"><i class="fa fa-times"></i></a>
-               </div>
-            </div>
-            </div>
-            </div>
-    </div>
-    </div>
     
    <!-- Edit Modal -->
 

@@ -38,7 +38,7 @@ export class PlayerService{
           return this.http.put<Player>(`http://localhost:8080/player/update`, player);
         }
 
-        deletePlayer(playerId: number): Observable<void> {
+        deletePlayer(playerId): Observable<void> {
             return this.http.delete<void>(`http://localhost:8080/player/delete/${playerId}`);
         }
 }
