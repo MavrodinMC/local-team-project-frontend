@@ -4,4 +4,7 @@ export interface Player {
     position: string | any;
     foot: string | any;
     senior: boolean | any;
+    goals: number | any;
+    shirtNumber: number | any;
+    dateOfBirth: Date;
 }

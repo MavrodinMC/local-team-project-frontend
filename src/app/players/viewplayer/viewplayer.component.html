@@ -1,6 +1,29 @@
-<div id="view-player">
-    <h3>
-        {{player?.name}}
-    </h3>
+<div class="view-player">
+   <h4><span>{{player?.name}}</span></h4>
+</div>
+
+<button id="back-btn" type="button" class="btn btn-primary" (click)="goToList()">Inapoi</button>
+
+<div>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Foot</th>
+                <th>Shirt Number</th>
+                <th>Goals</th>
+                <th>Date of Birth</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{player?.position}}</td>
+                <td>{{player?.foot}}</td>
+                <td>{{player?.shirtNumber}}</td>
+                <td>{{player?.goals}}</td>
+                <td>{{player?.dateOfBirth}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
   
