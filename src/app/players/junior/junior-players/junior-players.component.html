@@ -1,7 +1,7 @@
 <div class="junior-container" id="main-container">
    <div *ngFor="let junior of juniors$">
       <div class="main-div">
-               <h2>22</h2>
+               <h2>{{junior?.shirtNumber}}</h2>
                <h5 id="view-junior">{{junior?.name}}</h5>
          <div class="card-body">
             <div class="float-right btn-group btn-group-sm">
@@ -20,7 +20,7 @@
       <div class="modal-dialog" role="document">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title" id="juniorEditModalLabel">Edit Junior {{editJunior?.name}}</h5>
+               <h5 class="modal-title" id="juniorEditModalLabel">Edit Junior - {{editJunior?.name}}</h5>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
                </button>
@@ -29,16 +29,28 @@
                <form #editForm="ngForm">
                   <div class="form-group">
                      <label for="name">Name</label>
-                     <input type="text" ngModel="{{editJunior?.name}}" name="name" class="form-control" id="name" placeholder="Name">
+                     <input type="text" ngModel="{{editJunior?.name}}" name="name" class="form-control" id="name">
                   </div>
                   <input type="hidden" ngModel="{{editJunior?.id}}" name="id" class="form-control" id="id">
                   <div class="form-group">
                      <label for="position">Position </label>
-                     <input type="text" ngModel="{{editJunior?.position}}" name="position" class="form-control" id="position" placeholder="Position">
+                     <input type="text" ngModel="{{editJunior?.position}}" name="position" class="form-control" id="position">
                   </div>
                   <div class="form-group">
                      <label for="foot">Foot</label>
-                     <input type="text" ngModel="{{editJunior?.foot}}" name="foot" class="form-control" id="foot" placeholder="Foot">
+                     <input type="text" ngModel="{{editJunior?.foot}}" name="foot" class="form-control" id="foot">
+                  </div>
+                  <div class="form-group">
+                     <label for="goals">Goals</label>
+                     <input type="number" ngModel="{{editJunior?.goals}}" name="goals" class="form-control" id="goals">
+                  </div>
+                  <div class="form-group">
+                     <label for="shirtNumber">Shirt Number</label>
+                     <input type="number" ngModel="{{editJunior?.shirtNumber}}" name="shirtNumber" class="form-control" id="shirtNumber">
+                  </div>
+                  <div class="form-group">
+                     <label for="dateOfBirth">Foot</label>
+                     <input type="date" ngModel="{{editJunior?.dateOfBirth}}" name="dateOfBirth" class="form-control" id="dateOfBirth">
                   </div>
                   <div class="form-group">
               <label for="senior">Alege: </label>

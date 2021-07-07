@@ -15,7 +15,7 @@ export class ViewplayerComponent implements OnInit {
   id: number;
   player: Player;
 
-  constructor(private playerService: PlayerService, private activatedRoute: ActivatedRoute, private route: Router, private toastr: ToastrService) { }
+  constructor(private playerService: PlayerService, private activatedRoute: ActivatedRoute, private route: Router) { }
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
@@ -30,6 +30,14 @@ export class ViewplayerComponent implements OnInit {
          alert(error.message);
       }
     );
+  }
+
+  goToList(): void {
+    if(this.player.senior === true) {
+      this.route.navigate(['senior']);
+    } else {
+      this.route.navigate(['junior']);
+    }
   }
 
 }
