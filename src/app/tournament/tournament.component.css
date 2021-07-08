@@ -1,10 +1,37 @@
 #tournament-list {
-    color:rgb(80, 255, 188);
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, monospace;
+    color: white;
     cursor:pointer;
 }
 
-ol:hover {
-   color:white;
+.tournament-container ul li {
+    list-style: none;
+    padding-left: 80px;
+    padding-top: 25px;
+}
+
+
+.tournament-container ul li span {
+    background-color: rgba(0, 152, 121, 1);
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 20px;
+}
+
+.tournament-container ul li span:hover {
+    color:black;
+    background-color: rgb(52, 207, 174);
+}
+
+ul li::before {
+    content: "\2605";
+    position: absolute;
+    padding-right: 10px;
+}
+
+ul li:hover::before {
+    color:black;
 }
 
 .form-group input {
