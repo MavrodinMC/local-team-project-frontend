@@ -1,9 +1,9 @@
 <div class="tournament-container" id="main-container">
     <div *ngFor="let tournament of tournaments">
         <div id="tournament-list">
-            <ol>
-                <ul (click)="goToViewTournament(tournament.id)">{{tournament.name}}</ul>
-            </ol>
+            <ul>
+                <li (click)="goToViewTournament(tournament.id)"><span>{{tournament.name}}</span></li>
+            </ul>
          </div>
     </div>
 </div>
