@@ -9,6 +9,7 @@
 h4 span {
     background-color: rgba(0, 152, 121, 1);
     padding: 10px;
+    border-radius: 10px;
 }
 
 #back-btn {
