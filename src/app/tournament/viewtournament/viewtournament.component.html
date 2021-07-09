@@ -1,18 +1,22 @@
 <div id = "view-tournament">
   <h3>
-      {{tournament?.name}}
+      <span>
+         {{tournament?.name}}
+      </span>
   </h3>
-
-  <button id="back-btn" type="button" class="btn btn-primary" (click)="goToList()">Inapoi</button>
-
   <div class="card-body">
-    <div class="float-center btn-group btn-group-sm">
-       <a (click)="onOpenModal(tournament, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit" title="Edit"><i class="fa fa-pencil"></i> </a>
-       <a (click)="onOpenModal(tournament, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete" title="Delete"><i class="fa fa-times"></i></a>
-    </div>
-  </div>
-  
+   <div class="float-center btn-group btn-group-sm">
+      <a (click)="onOpenModal(tournament, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit" title="Edit"><i class="fa fa-pencil"></i> </a>
+      <a (click)="onOpenModal(tournament, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete" title="Delete"><i class="fa fa-times"></i></a>
+   </div>
+ </div>
 </div>
+   
+<div>
+   <button id="back-btn" type="button" class="btn btn-primary" (click)="goToList()">Inapoi</button>
+</div>
+
+  
 
 <!--Edit Modal-->
 
@@ -118,11 +122,20 @@
   </div>
   </div>
 
-  <div *ngFor="let game of games" id="game-list">
-      <h6>
-         {{game?.homeTeam}} - {{game?.awayTeam}}
+  <!-- List of games -->
+  <div class="gamelist-parent">
+     <div class="gamelist-child">
+  <div *ngFor="let game of games" class="game-list">
+      <h6  class="gamelist-name">
+         <span>{{game?.homeTeam}} 
+            v.
+               {{game?.awayTeam}}</span>
       </h6>
-  </div>
+      <span class="gamelist-score">Scor: {{game?.score}}</span>
+     </div>
+    </div>
+   </div>
+
 
   <!-- Notification for no games in a tournament -->
   
