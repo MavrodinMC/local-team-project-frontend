@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TournamentService } from '../auth/login/shared/tournament.service';
-import { ToastrService } from 'ngx-toastr copy';
+import { ToastrService } from 'ngx-toastr';
 import { Tournament } from '../auth/login/shared/tournament';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';

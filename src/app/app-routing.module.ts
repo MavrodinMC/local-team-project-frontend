@@ -8,6 +8,7 @@ import { SeniorComponent } from './players/senior/senior.component';
 import { ViewplayerComponent } from './players/viewplayer/viewplayer.component';
 import { TournamentComponent } from './tournament/tournament.component';
 import { ViewtournamentComponent } from './tournament/viewtournament/viewtournament.component';
+import { ViewgameComponent } from './viewgame/viewgame.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:'junior', component: JuniorPlayersComponent},
   {path:'tournament', component: TournamentComponent},
   {path:'tournamentDetails', component: ViewtournamentComponent},
-  {path:'playerDetails', component: ViewplayerComponent}
+  {path:'playerDetails', component: ViewplayerComponent},
+  {path:'gameDetails', component: ViewgameComponent}
 ];
 
 @NgModule({

@@ -1,3 +1,5 @@
+import { Tournament } from "./tournament";
+
 export interface Game {
     id: number | any;
     date: string | any;
@@ -6,5 +8,6 @@ export interface Game {
     awayTeam: string | any;
     score: string | any;
     referee: string | any;
+    tournament: Tournament;
 
 }

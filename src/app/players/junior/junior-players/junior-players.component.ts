@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr copy';
+import { ToastrService } from 'ngx-toastr';
 import { Player } from 'src/app/auth/login/shared/player';
 import { PlayerService } from 'src/app/auth/login/shared/player.service';
 

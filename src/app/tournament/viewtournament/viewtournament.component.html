@@ -126,7 +126,7 @@
   <div class="gamelist-parent">
      <div class="gamelist-child">
   <div *ngFor="let game of games" class="game-list">
-      <h6  class="gamelist-name">
+      <h6 (click)="goToViewGame(game?.id)" class="gamelist-name">
          <span>{{game?.homeTeam}} 
             v.
                {{game?.awayTeam}}</span>

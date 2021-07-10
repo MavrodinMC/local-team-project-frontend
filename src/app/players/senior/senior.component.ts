@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr copy';
+import { ToastrService } from 'ngx-toastr';
 import { Player } from '../../auth/login/shared/player';
 import { PlayerService} from '../../auth/login/shared/player.service';
 

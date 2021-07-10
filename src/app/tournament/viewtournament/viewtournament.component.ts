@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tournament } from 'src/app/auth/login/shared/tournament';
 import { TournamentService } from 'src/app/auth/login/shared/tournament.service';
-import { ToastrService } from 'ngx-toastr copy';
+import { ToastrService } from 'ngx-toastr';
 import { TemplateBindingParseResult } from '@angular/compiler';
 import { Game } from 'src/app/auth/login/shared/game';
 import { NgForm } from '@angular/forms';
@@ -50,8 +50,13 @@ export class ViewtournamentComponent implements OnInit {
   }
 
 
+
   goToList() {
     this.route.navigate(['tournament']);
+  }
+
+  goToViewGame(id: number) {
+    this.route.navigate(['gameDetails'], {queryParams: { gameId: id}});
   }
 
   onAddGame(tournamentId, addForm: NgForm): void {
@@ -62,6 +67,7 @@ export class ViewtournamentComponent implements OnInit {
         console.log(data);
         this.toastr.success("Meci salvat cu succes.");
         addForm.reset();
+        this.ngOnInit();
       },
       (error: HttpErrorResponse) => {
 

@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxWebstorageModule} from 'ngx-webstorage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr copy';
+import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SeniorComponent } from './players/senior/senior.component';
@@ -19,6 +19,7 @@ import { PlayerService } from './auth/login/shared/player.service';
 import { TournamentComponent } from './tournament/tournament.component';
 import { ViewtournamentComponent } from './tournament/viewtournament/viewtournament.component';
 import { ViewplayerComponent } from './players/viewplayer/viewplayer.component';
+import { ViewgameComponent } from './viewgame/viewgame.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ViewplayerComponent } from './players/viewplayer/viewplayer.component';
     JuniorPlayersComponent,
     TournamentComponent,
     ViewtournamentComponent,
-    ViewplayerComponent
+    ViewplayerComponent,
+    ViewgameComponent
   ],
   imports: [
     BrowserModule,
