@@ -31,7 +31,7 @@ export class TournamentComponent implements OnInit {
   public onAddTournament(addForm: NgForm): void {
     document.getElementById('add-tournament-form')!.click();
     this.tournamentService.addTournament(addForm.value).subscribe(
-      (response: Tournament) => {
+      () => {
         addForm.reset();
         this.getAllTournaments();
         this.toastr.success("Competitie adaugata cu succes!")

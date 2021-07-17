@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Game } from './game';
+import { Player } from './player';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,18 @@ export class GameService {
     .set('gameId', gameId);
     return this.httpClient.get<any>(`http://localhost:8080/game/view`, {params: params});
   }
+
+  getAllPlayersInAGame(gameId): Observable<any> {
+    return this.httpClient.get<any>(`http://localhost:8080/game/players/all/${gameId}`);
+  }
    
   updateGame(tournamentId, game): Observable<void> {
     return this.httpClient.put<void>(`http://localhost:8080/game/update/${tournamentId}`, game);
+  }
+
+  addPlayersToAGame(gameId, players: Player[]): Observable<void> {
+    return this.httpClient.post<void>(
+      `http://localhost:8080/game/players/${gameId}`, players);
   }
 
   deleteGame(gameId: number): Observable<void> {

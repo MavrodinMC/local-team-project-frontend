@@ -1,3 +1,4 @@
+import { Player } from "./player";
 import { Tournament } from "./tournament";
 
 export interface Game {
@@ -9,5 +10,4 @@ export interface Game {
     score: string | any;
     referee: string | any;
     tournament: Tournament;
-
 }
