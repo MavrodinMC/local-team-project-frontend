@@ -36,3 +36,131 @@ h3 span {
     border-color: white;
     color:white;
 }
+
+.game-details {
+    padding-top: 30px;
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, monospace;
+    color: #e6e3e3;
+    margin-left: 100px;
+    
+}
+
+p span {
+    background-color: rgba(0, 152, 121, 1);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+    
+}
+
+
+#add-action-btn {
+    all: unset;
+    align-items: right;
+    position: fixed;
+    padding:0.3em 1.2em;
+    border:0.16em solid rgba(255, 255, 255, 0);
+    background-color: rgb(80, 255, 188);
+    border-radius: 2em;
+    right: 80px;
+    top: 200px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family:'Roboto', sans-serif;
+    font-weight: 500;
+    color: black;
+    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+#add-action-btn:hover {
+    background-color: black;
+    border-color: white;
+    color:white;
+}
+
+.card {
+    background-color:#262a2b;
+    width: 70%;
+    border:none;
+}
+
+#collapse-btn {
+    all: unset;
+    float: left;
+    position: fixed;
+    padding:0.3em 1.2em;
+    margin:-50 0.3em 0.2em 20;
+    border:0.16em solid rgba(255, 255, 255, 0);
+    background-color: rgb(80, 255, 188);
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family:'Roboto', sans-serif;
+    font-weight: 500;
+    color: black;
+    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+#collapse-btn:hover {
+    background-color: black;
+    border-color: white;
+    color:white;
+}
+
+#collapse-players-btn {
+
+    all: unset;
+    float: left;
+    position: fixed;
+    padding:0.3em 1.2em;
+    margin:-30px 0.3em 0.2em 20;
+    border:0.16em solid rgba(255, 255, 255, 0);
+    background-color: rgb(80, 255, 188);
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family:'Roboto', sans-serif;
+    font-weight: 500;
+    color: black;
+    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+#collapse-players-btn:hover {
+    background-color: black;
+    border-color: white;
+    color:white;
+}
+
+#listOfPlayers {
+    padding-top: 20px;
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, monospace;
+    color: white;
+    margin-left: 100px;
+}
+
+.list-group .list-group-item {
+   background-color:  rgba(0, 152, 121, 1);
+   color: white;
+}
+
+.list-group .list-group-item:hover {
+ background-color: rgba(0, 152, 121, 1);
+}
+
+.form-check-label {
+    margin: 0px 40px 0px 3px;
+}
+
+
+
+
