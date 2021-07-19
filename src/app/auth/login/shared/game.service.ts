@@ -32,6 +32,13 @@ export class GameService {
 
   deleteGame(gameId: number): Observable<void> {
     return this.httpClient.delete<void>(`http://localhost:8080/game/delete/${gameId}`);
-}
+  }
+
+  deleteAPlayerFromAGame(gameId: number, playerId: number):Observable<void> {
+
+    return this.httpClient.delete<void>(
+      `http://localhost:8080/game/players/delete/${gameId}/${playerId}`
+    );
+  }
 
 }

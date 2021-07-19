@@ -145,22 +145,20 @@
       </div>
    </div>
 
-   
-
  <div id="add-players-btn">
    <button id="add-action-btn" type="button" (click)="onAddPlayerModal(players, 'addPlayers')">Adauga jucatori la acest meci</button>
 </div>
 
 <div class="card">
    <div class="card-body">
-     <button id="collapse-players-btn" class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#playersCollapse" aria-expanded="false" aria-controls="playersCollapse" (click)="getAllPlayersInAGame(game.id)">Vezi titularii</button>
+     <button id="collapse-players-btn" class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#playersCollapse" aria-expanded="false" aria-controls="playersCollapse" (click)="getAllPlayersInAGame(game.id)">Vezi primul 11</button>
      <div class="collapse" id="playersCollapse" style>
        <div id="listOfPlayers" *ngFor="let player of displayPlayers">
          <ul class="list-group">
              <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center"><span>{{player.name}}</span>
              <span class="badge badge-dark badge-pill">{{player.position}}</span>
+             <a (click)="deleteAPlayerFromGameList(game.id, player.id)">Sterge</a>
              </li>
-            
          </ul>
      </div>
    </div>

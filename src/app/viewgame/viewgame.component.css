@@ -161,6 +161,11 @@ p span {
     margin: 0px 40px 0px 3px;
 }
 
+ul a:hover {
+ cursor: pointer;
+ color: black;
+}
+
 
 
 

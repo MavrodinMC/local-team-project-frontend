@@ -118,12 +118,15 @@ export class ViewgameComponent implements OnInit {
   }
 
   public listOfAddedPlayers(gameId, playersToSave: Player[]): void {
+    
         for(let i in this.checkedPlayers) {
             playersToSave[i] = this.checkedPlayers[i];
+            
         }
 
         this.gameService.addPlayersToAGame(gameId, playersToSave).subscribe(
           (data) => {
+            this.getAllPlayersInAGame(gameId);
             console.log(data);
             this.toastr.success("Players added.");
           },
@@ -132,6 +135,19 @@ export class ViewgameComponent implements OnInit {
           }
         );
   } 
+
+  public deleteAPlayerFromGameList(gameId, playerId): void {
+
+    this.gameService.deleteAPlayerFromAGame(gameId, playerId).subscribe(
+      () => {
+        this.toastr.error("Player deleted from list.");
+        this.getAllPlayersInAGame(gameId);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
 
   public onOpenModal(game: Game, mode: string): void {
     const container = document.getElementById('view-game');
