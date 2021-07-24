@@ -12,6 +12,10 @@ h3 span {
     border-radius: 10px;
 }
 
+.lineup {
+    color:rgb(61, 112, 207);
+}
+
 #back-btn {
     all: unset;
     float: left;
@@ -80,6 +84,11 @@ p span {
     border-color: white;
     color:white;
 }
+
+#add-action-btn:disabled{
+    display:none;
+}
+
 
 .card {
     background-color:#262a2b;

@@ -13,7 +13,7 @@
 </div>
    
 <div>
-   <button id="back-btn" type="button" class="btn btn-primary" (click)="goToList()">Inapoi</button>
+   <button id="back-btn" type="button" class="btn btn-primary" (click)="goToList()">Back</button>
 </div>
 
 <!--Edit Modal-->
@@ -30,9 +30,16 @@
         <div class="modal-body">
            <form #editForm="ngForm">
               <div class="form-group">
-                 <label for="name">Denumire</label>
+                 <label for="name">Name</label>
                  <input type="text" ngModel="{{editTournament?.name}}" name="name" class="form-control" id="name">
-                </div>
+               </div>
+              <div class="form-group">
+               <label for="active">Set: </label>
+               <select class="form-control" ngModel name="active" id="active">
+                <option [ngValue]="true">Active</option>
+                <option [ngValue]="false">Over</option>
+              </select>
+              </div>   
                 <input type="hidden" ngModel="{{editTournament?.id}}" name="id" class="form-control" id="id">
                  <div class="modal-footer" id="edit-btn">
                   <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
@@ -67,7 +74,7 @@
 </div>
 
 <div class="button">
-  <button type="button" id="view-add-btn" (click)="onOpenGameModal(null!, 'add')">Adauga meci 
+  <button type="button" id="view-add-btn" (click)="onOpenGameModal(null!, 'add')">Add a game 
      <span class="sr-only">(current)</span>
   </button>
 </div>
@@ -78,41 +85,41 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
        <div class="modal-header">
-          <h5 class="modal-title" id="addGameModalLabel">Adauga Meci</h5>
+          <h5 class="modal-title" id="addGameModalLabel">Add Game</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
        </div>
-       <div class="modal-body">
+       <div class="modal-body was-validated">
           <form #addForm="ngForm" (ngSubmit)="onAddGame(tournament.id, addForm)">
             <div class="form-group">
-              <label for="date">Data Meciului</label>
+              <label for="date">Date</label>
               <input type="text" ngModel name="date" class="form-control"
                id="date" required>
            </div>
            <div class="form-group">
-            <label for="location">Locatie</label>
+            <label for="location">Location</label>
             <input type="text" ngModel name="location" class="form-control"
              id="location" required>
          </div>
          <div class="form-group">
-          <label for="homeTeam">Gazda</label>
+          <label for="homeTeam">Home Team</label>
           <input type="text" ngModel name="homeTeam" class="form-control"
            id="gomeTeam" required>
        </div>
        <div class="form-group">
-        <label for="awayTeam">Oaspeti</label>
+        <label for="awayTeam">Away Team</label>
         <input type="text" ngModel name="awayTeam" class="form-control"
          id="awayTeam" required>
      </div>
    <div class="form-group">
-    <label for="referee">Arbitru Central</label>
+    <label for="referee">Referee</label>
     <input type="text" ngModel name="referee" class="form-control"
      id="referee" required>
  </div>
           <div class="modal-footer">
              <button type="button" id="add-game-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-             <button [disabled]="addForm.invalid" id="add-game" type="submit" class="btn btn-primary" >Adauga</button>
+             <button [disabled]="addForm.invalid" id="add-game" type="submit" class="btn btn-primary" >Add</button>
           </div>
           </form>
        </div>
@@ -130,7 +137,7 @@
             v.
                {{game?.awayTeam}}</span>
       </h6>
-      <span class="gamelist-score">Scor: {{game?.score}}</span>
+      <span class="gamelist-score">Score: {{game?.score}}</span>
      </div>
     </div>
    </div>
@@ -140,7 +147,7 @@
   
   <div *ngIf="games?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
    <div class="alert alert-info" role="alert">
-     <p>Nu exista inca meciuri inregistrate pentru acest campionat.</p>
+     <p>There are no games registered for this tournament yet.</p>
    </div>
    </div>
 

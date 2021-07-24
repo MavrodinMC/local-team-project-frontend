@@ -4,9 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Tournament } from 'src/app/auth/login/shared/tournament';
 import { TournamentService } from 'src/app/auth/login/shared/tournament.service';
 import { ToastrService } from 'ngx-toastr';
-import { TemplateBindingParseResult } from '@angular/compiler';
 import { Game } from 'src/app/auth/login/shared/game';
 import { NgForm } from '@angular/forms';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-viewtournament',
@@ -49,8 +49,6 @@ export class ViewtournamentComponent implements OnInit {
     );
   }
 
-
-
   goToList() {
     this.route.navigate(['tournament']);
   }
@@ -65,7 +63,7 @@ export class ViewtournamentComponent implements OnInit {
     this.tournamentService.addGameToATournament(tournamentId, addForm.value).subscribe(
       data => {
         console.log(data);
-        this.toastr.success("Meci salvat cu succes.");
+        this.toastr.success("Game saved!");
         addForm.reset();
         this.ngOnInit();
       },
@@ -82,7 +80,7 @@ export class ViewtournamentComponent implements OnInit {
     this.tournamentService.updateTournament(tournament).subscribe(
       () => {
         this.route.navigate(['tournament']);
-        this.toastr.success("Campionat modificat cu succes.")
+        this.toastr.success("Tournament edited!")
       }, 
       (error: HttpErrorResponse) => {
         alert(error.message);

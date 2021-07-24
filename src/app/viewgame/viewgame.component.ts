@@ -5,13 +5,10 @@ import { Game } from '../auth/login/shared/game';
 import { GameService } from '../auth/login/shared/game.service';
 import { Tournament } from '../auth/login/shared/tournament';
 import { ToastrService } from 'ngx-toastr';
-import { Location } from '@angular/common';
+import { getLocaleDayPeriods, Location } from '@angular/common';
 import { PlayerService } from '../auth/login/shared/player.service';
 import { Player } from '../auth/login/shared/player';
-import { MultiSelectComponent } from 'ng-multiselect-dropdown';
-import { NgForm } from '@angular/forms';
-import { $ } from 'protractor';
-import { ThrowStmt } from '@angular/compiler';
+import { CheckboxControlValueAccessor } from '@angular/forms';
 
 
 @Component({
@@ -50,7 +47,7 @@ export class ViewgameComponent implements OnInit {
     );
       this.playerService.getPlayersList().subscribe(
         (data) => {
-          this.players = data;
+           this.players = data;
         }, 
         (error: HttpErrorResponse) => {
           alert(error.message);
@@ -68,7 +65,7 @@ export class ViewgameComponent implements OnInit {
   onUpdateGame(tournamentId, game: Game): void {
     this.gameService.updateGame(tournamentId, game).subscribe(
       () => {
-        this.toastr.success("Meci modificat cu succes.");
+        this.toastr.success("Game edited!");
         this.ngOnInit();
       }, 
       (error: HttpErrorResponse) => {
@@ -77,14 +74,18 @@ export class ViewgameComponent implements OnInit {
     );
   }
 
+
   change(player) {
+
     let updateItem = this.checkedPlayers.find(this.findIndexToUpdate, player.id);
     let index = this.checkedPlayers.indexOf(updateItem);
+
     if(index > -1) {
       this.checkedPlayers.splice(index, 1);
     }
     else {
       this.checkedPlayers.push(player);
+      console.log(this.checkedPlayers);
     }
   }
 
@@ -121,7 +122,6 @@ export class ViewgameComponent implements OnInit {
     
         for(let i in this.checkedPlayers) {
             playersToSave[i] = this.checkedPlayers[i];
-            
         }
 
         this.gameService.addPlayersToAGame(gameId, playersToSave).subscribe(
