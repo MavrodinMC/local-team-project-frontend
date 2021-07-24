@@ -4,7 +4,7 @@
    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.css" rel="stylesheet"/>
    </head>
 <div class="add-btn"v id="btn-container">
-    <button type="button" (click)="onOpenModal(null!, 'add')">Adauga jucator 
+    <button type="button" (click)="onOpenModal(null!, 'add')">Add player 
        <span class="sr-only">(current)</span>
     </button>
   </div>
@@ -18,10 +18,10 @@
             <div>
                 <div>
                     <ul>
-                        <li><a href="/">Acasa</a></li>
-                        <li><a routerLink="/tournament">Competitii</a></li>
-                        <li><a routerLink="/senior">Seniori</a></li>
-                        <li><a routerLink="/junior">Juniori</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a routerLink="/tournament">Competitions</a></li>
+                        <li><a routerLink="/senior">Seniors</a></li>
+                        <li><a routerLink="/junior">Juniors</a></li>
                         <li><a href="/">Staff</a></li>
                         <li><a href="/">Contact</a></li>
                     </ul>
@@ -52,7 +52,7 @@
             <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <div class="modal-body">
+         <div class="modal-body was-validated">
             <form #addForm="ngForm" (ngSubmit)="onAddPlayer(addForm)">
             <div class="form-group">
                <label for="name">Name</label>
@@ -76,7 +76,7 @@
                <input type="date" ngModel name="dateOfBirth" class="form-control" id="dateOfBirth" required>
             </div>
             <div class="form-group">
-               <label for="senior">Alege: </label>
+               <label for="senior">Choose: </label>
                <select class="custom-select"  ngModel name="senior" id="senior" required>
                 <option [ngValue]="true">Senior</option>
                 <option [ngValue]="false">Junior</option>
@@ -84,7 +84,7 @@
             </div>
             <div class="modal-footer">
                <button type="button" id="add-player-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-               <button [disabled]="addForm.invalid" id="add-player" type="submit" class="btn btn-primary" >Adauga</button>
+               <button [disabled]="addForm.invalid" id="add-player" type="submit" class="btn btn-primary">Add</button>
             </div>
             </form>
          </div>

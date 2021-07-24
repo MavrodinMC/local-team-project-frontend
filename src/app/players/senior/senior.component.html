@@ -9,7 +9,7 @@
                <a (click)="onOpenModal(senior, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete" title="Delete"><i class="fa fa-times"></i></a>
             </div>
          </div>
-         <button class="details-btn" (click)="goToViewPlayer(senior?.id)">Detalii</button>
+         <button class="details-btn" (click)="goToViewPlayer(senior?.id)">Details</button>
          </div>
       </div>
    </div> 
@@ -55,7 +55,7 @@
                   </div>
                   <div class="form-group">
               <label for="isSenior">Alege: </label>
-              <select  ngModel name="senior" id="senior">
+              <select class="form-control" ngModel name="senior" id="senior">
                <option [ngValue]="true">Senior</option>
                <option [ngValue]="false">Junior</option>
              </select>

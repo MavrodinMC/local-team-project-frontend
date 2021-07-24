@@ -1,16 +1,16 @@
-#tournament-list {
-    font-size: 15px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, monospace;
-    color: white;
-    cursor:pointer;
-}
-
+ 
 .tournament-container ul li {
     list-style: none;
     padding-left: 80px;
     padding-top: 25px;
 }
 
+.active-tournaments .card {
+    background-color:#262a2b;
+    width: 18rem;
+    border:none;
+    position: relative;
+}
 
 .tournament-container ul li span {
     background-color: rgba(0, 152, 121, 1);
@@ -31,6 +31,7 @@ ul li::before {
 }
 
 ul li:hover::before {
+    cursor: pointer;
     color:black;
 }
 
@@ -42,6 +43,8 @@ button {
     all: unset;
     padding:0.3em 1.2em;
     margin:0 0.1em 0.1em 0;
+    margin-top: 10rem;
+    margin-left: 10rem;
     border:0.16em solid rgba(255, 255, 255, 0);
     background-color: rgb(80, 255, 188);
     border-radius: 2em;
@@ -55,7 +58,33 @@ button {
     transition: all 0.2s;
     cursor: pointer;
 }
+
 button:hover {
+    color:white;
+    background-color:black;
+    border-color: white;
+}
+ .card button {
+    all: unset;
+    padding:0.3em 1.2em;
+    /* margin:0 0.1em 0.1em 0; */
+    margin-top: 10rem;
+    margin-left: 10rem;
+    border:0.16em solid rgba(255, 255, 255, 0);
+    background-color: rgb(80, 255, 188);
+    border-radius: 2em;
+    width: 300px;
+    height: 40px;
+    text-decoration: none;
+    font-family:'Roboto', sans-serif;
+    font-weight: 500;
+    color: black;
+    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.active-tournaments .card button:hover {
     color:white;
     background-color:black;
     border-color: white;
@@ -74,3 +103,47 @@ cursor: not-allowed;
 #btn-container .add-comp-btn {
     outline: none;
 }
+
+#collapse-tournament-btn {
+    align-items: center;
+}
+
+.card-header{
+    color: white;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.list-group-item {
+    background-color: #262a2b;
+    color: black;
+    border:none;
+}
+
+.list-group-item:hover {
+    cursor: pointer;
+    background-color: #262a2b;
+    
+}
+
+.tournament-header {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, monospace;
+    color: #e6e3e3;
+    padding-top: 30px;
+    text-align: center;
+}
+
+h6 span {
+    font-size: 25px;
+    background-color: rgba(0, 152, 121, 1);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#ended-tournament-btn {
+     
+    background-color: gray;
+}
+
+

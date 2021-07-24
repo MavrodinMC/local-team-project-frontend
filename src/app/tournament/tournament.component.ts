@@ -5,6 +5,7 @@ import { Tournament } from '../auth/login/shared/tournament';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-tournament',
@@ -15,6 +16,8 @@ export class TournamentComponent implements OnInit {
 
   tournaments: Tournament[];
   tournament: Tournament;
+  activeTournaments: Tournament[];
+  endedTournaments: Tournament[];
 
   constructor(private tournamentService: TournamentService, private toastr: ToastrService, private route: Router) { }
 
@@ -28,13 +31,29 @@ export class TournamentComponent implements OnInit {
       });
   }
 
+  getActiveTournaments(): void {
+    const toAdd = this.tournaments.filter((tournament) => {
+      return tournament.active == true;
+    });
+    console.log(toAdd);
+    this.activeTournaments = toAdd;
+  }
+
+  getEndedTournaments(): void {
+    const toAdd = this.tournaments.filter((tournament) => {
+        return tournament.active == false;
+    });
+    console.log(toAdd);
+    this.endedTournaments = toAdd;
+  }
+
   public onAddTournament(addForm: NgForm): void {
     document.getElementById('add-tournament-form')!.click();
     this.tournamentService.addTournament(addForm.value).subscribe(
       () => {
         addForm.reset();
         this.getAllTournaments();
-        this.toastr.success("Competitie adaugata cu succes!")
+        this.toastr.success("Tournament added!")
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

@@ -1,15 +1,45 @@
-<div class="tournament-container" id="main-container">
-    <div *ngFor="let tournament of tournaments">
-        <div id="tournament-list">
-            <ul>
-                <li (click)="goToViewTournament(tournament.id)"><span>{{tournament.name}}</span></li>
-            </ul>
-         </div>
-    </div>
+<div id="main-container">
 </div>
 
-<div class="button" id="btn-container">
-    <button type="button" class="add-comp-btn" (click)="onOpenModal(null!, 'add')">Adauga o competitie 
+<div class="tournament-header">
+    <h6><span>Tournaments list</span></h6>
+</div>
+
+<div class="active-tournaments">
+<div class="card">
+   <div class="card-body">
+     <button id="collapse-tournament-btn" class="btn collapsed" type="button" data-toggle="collapse" data-target="#activeTournamentsCollapse" aria-expanded="false" aria-controls="activeTournamentsCollapse" (click)="getActiveTournaments()">Active tournaments</button>
+   <div class="collapse" id="activeTournamentsCollapse">
+      <div class="card card-body">
+      <div class="tournament-container" *ngFor="let tournament of activeTournaments">
+        <ul class="list-group" id="tournament-list">
+            <li (click)="goToViewTournament(tournament.id)" class="list-group-item d-flex list-group-item-action justify-content-between align-items-center"><span>{{tournament.name}}</span>
+            </li>
+        </ul>
+    </div>
+   </div>
+  </div>
+</div>
+</div>
+<div class="card">
+   <div class="card-body">
+     <button id="ended-tournament-btn" class="btn collapsed" type="button" data-toggle="collapse" data-target="#endedTournamentCollapse" aria-expanded="false" aria-controls="endedTournamentCollapse" (click)="getEndedTournaments()">Ended tournaments</button>
+   <div class="collapse" id="endedTournamentCollapse">
+      <div class="card card-body">
+      <div class="tournament-container" *ngFor="let tournament of endedTournaments">
+        <ul class="list-group" id="tournament-list">
+            <li (click)="goToViewTournament(tournament.id)" class="list-group-item d-flex list-group-item-action justify-content-between align-items-center"><span>{{tournament.name}}</span>
+            </li>
+        </ul>
+    </div>
+   </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div id="btn-container">
+    <button type="button" class="add-comp-btn" (click)="onOpenModal(null!, 'add')">Add tournament 
        <span class="sr-only">(current)</span>
     </button>
   </div>
@@ -21,21 +51,21 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id="addTournamentModalLabel">Adauga Competitie</h5>
+            <h5 class="modal-title" id="addTournamentModalLabel">Add tournament</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <div class="modal-body">
+         <div class="modal-body was-validated">
             <form #addForm="ngForm" (ngSubmit)="onAddTournament(addForm)">
             <div class="form-group">
-               <label for="name">Denumire</label>
+               <label for="name">Name</label>
                <input type="text" ngModel name="name" class="form-control"
                 id="name" required>
             </div>
             <div class="modal-footer">
                <button type="button" id="add-tournament-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-               <button [disabled]="addForm.invalid" id="add-tournament" type="submit" class="btn btn-primary" >Adauga</button>
+               <button [disabled]="addForm.invalid" id="add-tournament" type="submit" class="btn btn-primary" >Add</button>
             </div>
             </form>
          </div>
