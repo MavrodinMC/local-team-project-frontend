@@ -20,6 +20,10 @@ export class GameService {
   getAllPlayersInAGame(gameId): Observable<any> {
     return this.httpClient.get<any>(`http://localhost:8080/game/players/all/${gameId}`);
   }
+
+  getPlayersList(gameId): Observable<any> {
+    return this.httpClient.get<any>(`http://localhost:8080/game/players/list/${gameId}`)
+  }
    
   updateGame(tournamentId, game): Observable<void> {
     return this.httpClient.put<void>(`http://localhost:8080/game/update/${tournamentId}`, game);
