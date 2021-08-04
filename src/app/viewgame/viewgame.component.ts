@@ -9,6 +9,7 @@ import { getLocaleDayPeriods, Location } from '@angular/common';
 import { PlayerService } from '../auth/login/shared/player.service';
 import { Player } from '../auth/login/shared/player';
 import { CheckboxControlValueAccessor } from '@angular/forms';
+import { ThrowStmt } from '@angular/compiler';
 
 
 @Component({
@@ -18,7 +19,7 @@ import { CheckboxControlValueAccessor } from '@angular/forms';
 })
 export class ViewgameComponent implements OnInit {
 
-  players: Player[];
+  players = [];
   id: number;
   tournamentId: number;
   game: Game;
@@ -27,7 +28,7 @@ export class ViewgameComponent implements OnInit {
   public deleteGame: Game;
   public addedPlayers: Player[];
   checkedPlayers = [];
-  displayPlayers: Player[];
+  displayPlayers = [];
 
   constructor(private gameService: GameService,private activatedRoute: ActivatedRoute, private route: Router, private toastr: ToastrService, private location: Location, private playerService: PlayerService) { }
 
@@ -45,15 +46,7 @@ export class ViewgameComponent implements OnInit {
          alert(error.message);
       }
     );
-      this.playerService.getPlayersList().subscribe(
-        (data) => {
-           this.players = data;
-        }, 
-        (error: HttpErrorResponse) => {
-          alert(error.message);
-        }
-      );
-      
+      this.getPlayersList(this.id);
       this.getAllPlayersInAGame(this.id);
   }
 
@@ -61,6 +54,16 @@ export class ViewgameComponent implements OnInit {
     this.location.back();
   }
 
+  getPlayersList(gameId) {
+    this.gameService.getPlayersList(gameId).subscribe(
+      (data) => {
+        this.players = data;
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
   
   onUpdateGame(tournamentId, game: Game): void {
     this.gameService.updateGame(tournamentId, game).subscribe(
@@ -116,7 +119,7 @@ export class ViewgameComponent implements OnInit {
         alert(error.message);
       }
     );
-  }
+  };
 
   public listOfAddedPlayers(gameId, playersToSave: Player[]): void {
     
@@ -134,6 +137,7 @@ export class ViewgameComponent implements OnInit {
             alert(error.message);
           }
         );
+
   } 
 
   public deleteAPlayerFromGameList(gameId, playerId): void {
@@ -142,6 +146,7 @@ export class ViewgameComponent implements OnInit {
       () => {
         this.toastr.error("Player deleted from list.");
         this.getAllPlayersInAGame(gameId);
+        this.getPlayersList(gameId);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
