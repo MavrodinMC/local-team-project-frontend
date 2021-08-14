@@ -4,7 +4,7 @@
    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.css" rel="stylesheet"/>
    </head>
 <div class="add-btn"v id="btn-container">
-    <button type="button" (click)="onOpenModal(null!, 'add')">Add player 
+    <button type="button" id="hide-addbutton" (click)="onOpenModal(null!, 'add')">Add player 
        <span class="sr-only">(current)</span>
     </button>
   </div>
@@ -29,13 +29,13 @@
             </div>
         </div>
     </div>
-       <div class="login-btn">
+       <div class="login-btn" id="hide-button">
            <div>
                <a routerLink="/login">
             Login</a>
            </div>
        </div>
-       <div class="logout-btn">
+       <div class="logout-btn" id="hide-logout">
           <a routerLink="/logout">Logout</a>
        </div>
     </div>

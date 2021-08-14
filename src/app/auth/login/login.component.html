@@ -13,12 +13,12 @@
         class="form-control" [formControlName]="'password'" name="password" required>
         <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">Password cannot be empty</span>
     </div>
-
-    
     <input class="btn" type="submit" name="" value="Sign in">
+</form>
+<div class="message-container">
     <div class="login-failed" *ngIf='this.isError'>
         <p class="login-failed-text">Login failed. Please check your credentials and try again.</p>
     </div>
-</form>
+</div>
 </div>
 

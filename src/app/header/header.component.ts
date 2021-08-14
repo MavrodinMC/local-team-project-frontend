@@ -5,6 +5,8 @@ import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_par
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { LoginResponse } from '../auth/login/login.response.payload';
+import { AuthService } from '../auth/login/shared/auth.service';
 import { Player } from '../auth/login/shared/player';
 import { PlayerService } from '../auth/login/shared/player.service';
 
@@ -22,6 +24,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+   
   public onAddPlayer(addForm: NgForm): void {
     document.getElementById('add-player-form')!.click();
     this.playerService.addPlayer(addForm.value).subscribe(

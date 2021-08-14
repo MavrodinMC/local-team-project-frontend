@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginRequestPayload: LoginRequestPayload;
   isError: boolean;
-  isLoggedIn: boolean;
+  isLoggedIn = false;
 
 
   constructor(private authService: AuthService,
@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
      }
 
   ngOnInit(): void {
-
     this.loginForm = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
@@ -38,6 +37,7 @@ export class LoginComponent implements OnInit {
     this.loginRequestPayload.username = this.loginForm.get('username').value;
     this.loginRequestPayload.password = this.loginForm
     .get('password').value;
+    const hideLogin = document.getElementById('hide-button');
 
     this.authService.login(this.loginRequestPayload)
     .subscribe(data => {
@@ -46,11 +46,13 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('');
         this.toastr.success("Login succesfull");
         this.isLoggedIn = true;
+        hideLogin.style.display = 'none';
+        
       } else {
         this.isError = true;
-        this.toastr.error("Login failed. Check your credentials and try again.")
-        this.isLoggedIn = false;
+        hideLogin.style.display = 'visible';
       }
     })
   }
+
 }

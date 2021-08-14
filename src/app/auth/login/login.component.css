@@ -56,19 +56,21 @@
     border: 2px solid 
 }
 
+.message-container {
+    width: 300px;
+}
+
 .login-failed{
-    text-align: center;
-    margin: auto;
-    margin-top: 10px;
-    border: 2px solid black;
-    width: 65%;    
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .login-failed-text{
-    text-align: center;
-    margin-top: 5px;
-    font-weight: bold;    
-    color:aliceblue;
+  font-family: 'Karla', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #eaedf3;
+  text-align: center;
 }
 
