@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../login/shared/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-logout',
@@ -11,15 +12,13 @@ import { ToastrService } from 'ngx-toastr';
 export class LogoutComponent implements OnInit {
 
   constructor(private authService: AuthService,
-    private router:Router, private toastr: ToastrService) { }
+    private router:Router, private toastr: ToastrService) { 
+    }
 
   ngOnInit(): void {
-  }
-
-  logout() {
-    this.authService.logout;
-    this.router.navigateByUrl('');
-    this.toastr.success('You were logged out.');
+    this.authService.logout();
+    this.router.navigateByUrl('login');
+    this.toastr.success('You were logged out');
   }
 
 }

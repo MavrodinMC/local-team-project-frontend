@@ -1,19 +1,19 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { LoginRequestPayload } from '../login.request.payload'
 import { LoginResponse } from '../login.response.payload';
 import { map, tap } from 'rxjs/operators';
-import { analyzeFileForInjectables } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements HttpInterceptor {
 
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
   @Output() username: EventEmitter<string> = new EventEmitter();
+  hideLogin = document.getElementById('hide-button');
 
   refreshTokenPayload = {
     refreshToken: this.getRefreshToken(),
@@ -42,6 +42,19 @@ export class AuthService {
       }));
   }
 
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+      const jwtToken = this.localStorage.retrieve('authenticationToken');
+
+      if(!jwtToken) {
+        return next.handle(req);
+      }
+
+      const validRequest = req.clone(
+        { headers: req.headers.set('Authorization', `Bearer ${jwtToken}`)
+      });
+      return next.handle(validRequest);
+  }
+
   getJwtToken() {
     return this.localStorage.retrieve('authenticationToken');
   }
@@ -67,10 +80,12 @@ export class AuthService {
       }, error => {
         throwError(error);
       })
+    this.loggedIn.emit(false);
     this.localStorage.clear('authenticationToken');
     this.localStorage.clear('username');
     this.localStorage.clear('refreshToken');
     this.localStorage.clear('expiresAt');
+
   }
 
   getUserName() {
