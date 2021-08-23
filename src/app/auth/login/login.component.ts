@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { runInThisContext } from 'node:vm';
+import { HeaderComponent } from 'src/app/header/header.component';
 import { LoginRequestPayload } from './login.request.payload';
 import { AuthService } from './shared/auth.service';
 
@@ -15,8 +18,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginRequestPayload: LoginRequestPayload;
   isError: boolean;
-  isLoggedIn = false;
-
+  isLoggedIn: boolean = false;
+  hideLogin = document.getElementById('hide-button');
 
   constructor(private authService: AuthService,
     private router:Router, private toastr: ToastrService) {
@@ -27,30 +30,29 @@ export class LoginComponent implements OnInit {
      }
 
   ngOnInit(): void {
+
     this.loginForm = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });
   }
 
+
   login() {
     this.loginRequestPayload.username = this.loginForm.get('username').value;
     this.loginRequestPayload.password = this.loginForm
     .get('password').value;
-    const hideLogin = document.getElementById('hide-button');
 
     this.authService.login(this.loginRequestPayload)
     .subscribe(data => {
       if(data) {
         this.isError = false;
+        this.isLoggedIn = true;
         this.router.navigateByUrl('');
         this.toastr.success("Login succesfull");
-        this.isLoggedIn = true;
-        hideLogin.style.display = 'none';
-        
+        this.hideLogin.style.display = 'none';
       } else {
         this.isError = true;
-        hideLogin.style.display = 'visible';
       }
     })
   }

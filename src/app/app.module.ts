@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxWebstorageModule} from 'ngx-webstorage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -16,11 +16,11 @@ import { SeniorComponent } from './players/senior/senior.component';
 import {RouterModule} from '@angular/router';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { JuniorPlayersComponent } from './players/junior/junior-players/junior-players.component';
-import { PlayerService } from './auth/login/shared/player.service';
 import { TournamentComponent } from './tournament/tournament.component';
 import { ViewtournamentComponent } from './tournament/viewtournament/viewtournament.component';
 import { ViewplayerComponent } from './players/viewplayer/viewplayer.component';
 import { ViewgameComponent } from './viewgame/viewgame.component';
+import { AuthService } from './auth/login/shared/auth.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,9 @@ import { ViewgameComponent } from './viewgame/viewgame.component';
     FormsModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
-  providers:[PlayerService],
+  providers:[
+    {provide: HTTP_INTERCEPTORS, useClass: AuthService, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

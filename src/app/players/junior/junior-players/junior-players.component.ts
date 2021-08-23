@@ -32,7 +32,7 @@ export class JuniorPlayersComponent implements OnInit {
 
   public onUpdatePlayer(player: Player): void {
     this.playerService.updatePlayer(player).subscribe(
-      (response: Player) => {
+      () => {
         this.getAllJuniors(this.senior);
         this.toastr.success("Played edited succesfully.")
       }, 
