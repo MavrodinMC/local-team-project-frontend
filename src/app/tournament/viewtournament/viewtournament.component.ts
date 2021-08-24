@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Game } from 'src/app/auth/login/shared/game';
 import { NgForm } from '@angular/forms';
 import { $ } from 'protractor';
+import { AuthService } from 'src/app/auth/login/shared/auth.service';
 
 @Component({
   selector: 'app-viewtournament',
@@ -24,7 +25,7 @@ export class ViewtournamentComponent implements OnInit {
   game: Game;
   tournamentId: number;
 
-  constructor(private tournamentService: TournamentService, private activatedRoute: ActivatedRoute, private route: Router, private toastr: ToastrService) { }
+  constructor(private tournamentService: TournamentService, private activatedRoute: ActivatedRoute, private route: Router, private toastr: ToastrService, private authService: AuthService) { }
 
   ngOnInit(){
     this.activatedRoute.queryParams.subscribe(params => {
@@ -47,6 +48,10 @@ export class ViewtournamentComponent implements OnInit {
         alert(error.message);
      }
     );
+  }
+
+  hideOrShowButtons(): boolean {
+    return this.authService.isAuthenticated;
   }
 
   goToList() {

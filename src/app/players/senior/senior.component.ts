@@ -3,6 +3,7 @@ import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/auth/login/shared/auth.service';
 import { Player } from '../../auth/login/shared/player';
 import { PlayerService} from '../../auth/login/shared/player.service';
 
@@ -18,11 +19,15 @@ export class SeniorComponent implements OnInit {
   public deleteSenior: Player;
   isSenior = true;
   
-  constructor(private playerService: PlayerService, private toastr: ToastrService, private route: Router) {
+  constructor(private playerService: PlayerService, private toastr: ToastrService, private route: Router, private authService: AuthService) {
    }
 
   ngOnInit() {
     this.getAllSeniors(this.isSenior);
+  }
+
+  hideOrShowButtons(): boolean {
+    return this.authService.isAuthenticated;
   }
 
   getAllSeniors(isSenior: boolean): void {

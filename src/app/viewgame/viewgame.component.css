@@ -15,7 +15,7 @@ h3 span {
 .lineup {
     color:rgb(61, 112, 207);
 }
-
+/* 
 #back-btn {
     all: unset;
     float: left;
@@ -39,7 +39,7 @@ h3 span {
     background-color: black;
     border-color: white;
     color:white;
-}
+} */
 
 .game-details {
     padding-top: 30px;

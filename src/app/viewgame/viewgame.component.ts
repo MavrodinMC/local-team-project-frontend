@@ -10,6 +10,7 @@ import { PlayerService } from '../auth/login/shared/player.service';
 import { Player } from '../auth/login/shared/player';
 import { CheckboxControlValueAccessor } from '@angular/forms';
 import { ThrowStmt } from '@angular/compiler';
+import { AuthService } from '../auth/login/shared/auth.service';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class ViewgameComponent implements OnInit {
   checkedPlayers = [];
   displayPlayers = [];
 
-  constructor(private gameService: GameService,private activatedRoute: ActivatedRoute, private route: Router, private toastr: ToastrService, private location: Location, private playerService: PlayerService) { }
+  constructor(private gameService: GameService,private activatedRoute: ActivatedRoute, private route: Router, private toastr: ToastrService, private location: Location, private authService: AuthService) { }
 
   ngOnInit(){
     
@@ -48,6 +49,10 @@ export class ViewgameComponent implements OnInit {
     );
       this.getPlayersList(this.id);
       this.getAllPlayersInAGame(this.id);
+  }
+
+  hideOrShowButtons(): boolean {
+    return this.authService.isAuthenticated;
   }
 
   goToList() {

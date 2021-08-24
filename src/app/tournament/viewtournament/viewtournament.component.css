@@ -65,8 +65,7 @@ h3 span {
     color:white;
 }
 
-
-#back-btn {
+/* #back-btn {
     all: unset;
     float: left;
     position: fixed;
@@ -89,7 +88,7 @@ h3 span {
     background-color: black;
     border-color: white;
     color:white;
-}
+} */
 
 button {
     all: unset;

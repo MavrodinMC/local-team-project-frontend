@@ -12,7 +12,7 @@ h4 span {
     border-radius: 10px;
 }
 
-#back-btn {
+/* #back-btn {
     all: unset;
     float: left;
     padding:0.3em 1.2em;
@@ -35,7 +35,7 @@ h4 span {
     background-color: black;
     border-color: white;
     color:white;
-}
+} */
 
 .styled-table {
     border-collapse: collapse;

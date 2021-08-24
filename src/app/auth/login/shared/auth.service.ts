@@ -11,9 +11,8 @@ import { map, tap } from 'rxjs/operators';
 })
 export class AuthService implements HttpInterceptor {
 
-  @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
-  @Output() username: EventEmitter<string> = new EventEmitter();
-  hideLogin = document.getElementById('hide-button');
+  isAuthenticated: boolean = false;
+  loggedInUser: string;
 
   refreshTokenPayload = {
     refreshToken: this.getRefreshToken(),
@@ -35,9 +34,8 @@ export class AuthService implements HttpInterceptor {
        if (data.authenticationToken === null) {
           return false;
         }
-        this.loggedIn.emit(true);
-        this.username.emit(data.username);
-        
+        this.isAuthenticated = true;
+        this.loggedInUser = data.username;
         return true;
       }));
   }
@@ -80,7 +78,7 @@ export class AuthService implements HttpInterceptor {
       }, error => {
         throwError(error);
       })
-    this.loggedIn.emit(false);
+    this.isAuthenticated = false;
     this.localStorage.clear('authenticationToken');
     this.localStorage.clear('username');
     this.localStorage.clear('refreshToken');
