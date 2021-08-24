@@ -3,6 +3,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/auth/login/shared/auth.service';
 import { Player } from 'src/app/auth/login/shared/player';
 import { PlayerService } from 'src/app/auth/login/shared/player.service';
 
@@ -18,10 +19,14 @@ export class JuniorPlayersComponent implements OnInit {
   public editJunior: Player;
   public deleteJunior: Player;
 
-  constructor(private playerService: PlayerService, private toastr: ToastrService, private route: Router) { }
+  constructor(private playerService: PlayerService, private toastr: ToastrService, private route: Router, private authService: AuthService) { }
 
   ngOnInit() {
     this.getAllJuniors(this.senior);
+  }
+
+  hideOrShowButtons(): boolean {
+    return this.authService.isAuthenticated;
   }
 
   getAllJuniors(senior:boolean): void {

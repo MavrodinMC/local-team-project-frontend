@@ -5,7 +5,7 @@
            {{game?.homeTeam}} v. {{game?.awayTeam}}
         </span>
     </h3>
-    <div class="card-body">
+    <div *ngIf="hideOrShowButtons()" class="card-body">
         <div class="float-center btn-group btn-group-sm">
            <a (click)="onOpenModal(game, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit" title="Edit"><i class="fa fa-pencil"></i> </a>
            <a (click)="onOpenModal(game, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete" title="Delete"><i class="fa fa-times"></i></a>
@@ -13,10 +13,9 @@
     </div>
 </div>
 
-<div>
+<!-- <div>
    <button id="back-btn" type="button" class="btn btn-primary" (click)="goToList()">Back</button>
-</div>
-
+</div> -->
 
 
  <!-- Edit Modal -->
@@ -133,7 +132,7 @@
                </p>
                <br>
                <p>
-                  <span>The game was played on: {{game?.location}}</span>
+                  <span>The game was played at: {{game?.location}}</span>
                </p>
                <br>
                   <p>
@@ -154,7 +153,7 @@
    </div>
 
  <div id="add-players-btn">
-   <button id="add-action-btn" type="button" (click)="onAddPlayerModal(players, 'addPlayers')" [disabled]="displayPlayers?.length == 11" >Add line-up to this match</button>
+   <button *ngIf="hideOrShowButtons()" id="add-action-btn" type="button" (click)="onAddPlayerModal(players, 'addPlayers')" [disabled]="displayPlayers?.length == 11" >Add line-up to this match</button>
 </div>
 
 <div class="card">
@@ -165,7 +164,7 @@
          <ul class="list-group">
              <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center"><span>{{player.name}}</span>
              <span class="badge badge-dark badge-pill">{{player.position}}</span>
-             <a (click)="deleteAPlayerFromGameList(game.id, player.id)">Remove</a>
+             <a *ngIf="hideOrShowButtons()" (click)="deleteAPlayerFromGameList(game.id, player.id)">Remove</a>
              </li>
          </ul>
      </div>

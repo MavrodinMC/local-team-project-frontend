@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
   loginRequestPayload: LoginRequestPayload;
   isError: boolean;
   isLoggedIn: boolean = false;
-  hideLogin = document.getElementById('hide-button');
 
   constructor(private authService: AuthService,
     private router:Router, private toastr: ToastrService) {
@@ -50,7 +49,6 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.router.navigateByUrl('');
         this.toastr.success("Login succesfull");
-        this.hideLogin.style.display = 'none';
       } else {
         this.isError = true;
       }

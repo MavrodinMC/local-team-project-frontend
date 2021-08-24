@@ -3,7 +3,7 @@
       <div class="main-div">
                <h2>{{senior?.shirtNumber}}</h2>
                <h5 id="view-senior">{{senior?.name}}</h5>
-         <div class="card-body">
+         <div *ngIf="hideOrShowButtons()" class="card-body">
             <div class="float-right btn-group btn-group-sm">
                <a (click)="onOpenModal(senior, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit" title="Edit"><i class="fa fa-pencil"></i> </a>
                <a (click)="onOpenModal(senior, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete" title="Delete"><i class="fa fa-times"></i></a>

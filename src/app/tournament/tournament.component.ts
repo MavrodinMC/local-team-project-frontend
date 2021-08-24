@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ThrowStmt } from '@angular/compiler';
+import { AuthService } from '../auth/login/shared/auth.service';
 
 @Component({
   selector: 'app-tournament',
@@ -19,10 +20,14 @@ export class TournamentComponent implements OnInit {
   activeTournaments: Tournament[];
   endedTournaments: Tournament[];
 
-  constructor(private tournamentService: TournamentService, private toastr: ToastrService, private route: Router) { }
+  constructor(private tournamentService: TournamentService, private toastr: ToastrService, private route: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.getAllTournaments();
+  }
+
+  hideOrShowButtons(): boolean {
+    return this.authService.isAuthenticated;
   }
 
   getAllTournaments(): void {

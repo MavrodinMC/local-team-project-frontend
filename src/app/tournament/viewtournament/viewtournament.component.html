@@ -4,7 +4,7 @@
          {{tournament?.name}}
       </span>
   </h3>
-  <div class="card-body">
+  <div *ngIf="hideOrShowButtons()" class="card-body">
    <div class="float-center btn-group btn-group-sm">
       <a (click)="onOpenModal(tournament, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit" title="Edit"><i class="fa fa-pencil"></i> </a>
       <a (click)="onOpenModal(tournament, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete" title="Delete"><i class="fa fa-times"></i></a>
@@ -12,9 +12,9 @@
  </div>
 </div>
    
-<div>
+<!-- <div>
    <button id="back-btn" type="button" class="btn btn-primary" (click)="goToList()">Back</button>
-</div>
+</div> -->
 
 <!--Edit Modal-->
 
@@ -73,7 +73,7 @@
   </div>
 </div>
 
-<div class="button">
+<div *ngIf="hideOrShowButtons()" class="button">
   <button type="button" id="view-add-btn" (click)="onOpenGameModal(null!, 'add')">Add a game 
      <span class="sr-only">(current)</span>
   </button>

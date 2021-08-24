@@ -19,6 +19,14 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  showOrHideButtons():boolean {
+    return this.authService.isAuthenticated;
+  }
+
+  getLoggedInUsername(): string {
+    return this.authService.loggedInUser;
+  }
    
   public onAddPlayer(addForm: NgForm): void {
     document.getElementById('add-player-form')!.click();

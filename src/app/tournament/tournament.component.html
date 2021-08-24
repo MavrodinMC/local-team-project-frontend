@@ -38,7 +38,7 @@
 </div>
 </div>
 
-<div id="btn-container">
+<div *ngIf="hideOrShowButtons()" id="btn-container">
     <button type="button" class="add-comp-btn" (click)="onOpenModal(null!, 'add')">Add tournament 
        <span class="sr-only">(current)</span>
     </button>

@@ -131,6 +131,24 @@ body {
     border-color: white;
 }
 
+.logout-btn p {
+    padding:0.3em 1.2em;
+    position:fixed;
+    top: 10px;
+    z-index: 1;
+    display: flex;
+    margin:0 0.1em 0.1em 0;
+    margin-left: 400px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family:'Roboto', sans-serif;
+    font-weight: 500;
+    color: white;
+    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+    text-align: center;
+    transition: all 0.2s;
+}
+
 .add-btn button {
     all: unset;
     padding:0.3em 1.2em;

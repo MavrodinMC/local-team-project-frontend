@@ -3,14 +3,14 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.css" rel="stylesheet"/>
    </head>
-<div class="add-btn"v id="btn-container">
+<div *ngIf="showOrHideButtons()" class="add-btn"v id="btn-container">
     <button type="button"  id="hide-addbutton" (click)="onOpenModal(null!, 'add')">Add player 
        <span class="sr-only">(current)</span>
     </button>
   </div>
 <header class="showcase">
     <div class="container showcase-inner">
-        <h1>Titlu</h1>
+        <h1>Football</h1>
     <div class="menu-wrap">
         <input type="checkbox" class="toggler">
         <div class="hamburger"><div></div></div>
@@ -29,15 +29,16 @@
             </div>
         </div>
     </div>
-       <div class="login-btn" id="hide-button">
+       <div *ngIf="showOrHideButtons() === false" class="login-btn" id="hide-button">
            <div>
                <a routerLink="/login">
             Login</a>
            </div>
        </div>
-       <div id="hide-logout" class="logout-btn">
+       <div *ngIf="showOrHideButtons() === true" id="hide-logout" class="logout-btn">
           <div>
           <a routerLink="/logout">Logout</a>
+          <p>You are logged in as: {{getLoggedInUsername()}}</p>
          </div>
        </div>
     </div>
