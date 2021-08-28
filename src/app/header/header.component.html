@@ -12,11 +12,11 @@
     <div class="container showcase-inner">
         <h1>Football</h1>
     <div class="menu-wrap">
-        <input type="checkbox" class="toggler">
+        <input type="checkbox" class="toggler" id="closeMenu">
         <div class="hamburger"><div></div></div>
-        <div class="menu">
+        <div class="menu" id="closeMenu">
             <div>
-                <div>
+                <div (click)="closeMenu()">
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a routerLink="/tournament">Competitions</a></li>
