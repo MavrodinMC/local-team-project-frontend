@@ -1,10 +1,11 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { LoginRequestPayload } from '../login.request.payload'
 import { LoginResponse } from '../login.response.payload';
 import { map, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import { map, tap } from 'rxjs/operators';
 export class AuthService implements HttpInterceptor {
 
   isAuthenticated: boolean = false;
-  loggedInUser: string;
+  private loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus());
 
   refreshTokenPayload = {
     refreshToken: this.getRefreshToken(),
@@ -23,7 +24,10 @@ export class AuthService implements HttpInterceptor {
     private localStorage: LocalStorageService) {
   }
 
+
+
   login(loginRequestPayload: LoginRequestPayload): Observable<boolean> {
+
     return this.httpClient.post<LoginResponse>('http://localhost:8080/api/login',
       loginRequestPayload).pipe(map(data => {
         this.localStorage.store('authenticationToken', data.authenticationToken);
@@ -34,8 +38,10 @@ export class AuthService implements HttpInterceptor {
        if (data.authenticationToken === null) {
           return false;
         }
+         
         this.isAuthenticated = true;
-        this.loggedInUser = data.username;
+        this.loginStatus.next(true);
+        this.localStorage.store('loginStatus', '1');
         return true;
       }));
   }
@@ -78,11 +84,13 @@ export class AuthService implements HttpInterceptor {
       }, error => {
         throwError(error);
       })
+    this.loginStatus.next(false);
     this.isAuthenticated = false;
     this.localStorage.clear('authenticationToken');
     this.localStorage.clear('username');
     this.localStorage.clear('refreshToken');
     this.localStorage.clear('expiresAt');
+    this.localStorage.store("loginStatus", "0");
 
   }
 
@@ -93,7 +101,13 @@ export class AuthService implements HttpInterceptor {
     return this.localStorage.retrieve('refreshToken');
   }
 
-  isLoggedIn(): boolean {
-    return this.getJwtToken() != null;
+  checkLoginStatus(): boolean {
+    var loginCookie = this.localStorage.retrieve("loginStatus");
+    if(loginCookie == "1") {
+      this.isAuthenticated = true;
+      return true;
+    }
+    return false;
   }
+
 }

@@ -14,18 +14,11 @@ import { PlayerService } from '../auth/login/shared/player.service';
 export class HeaderComponent implements OnInit {
   @Input() ngValue: boolean;
 
+
   constructor(private playerService: PlayerService, private toastr: ToastrService, private authService: AuthService) { 
   }
 
   ngOnInit(): void {
-  }
-
-  showOrHideButtons():boolean {
-    return this.authService.isAuthenticated;
-  }
-
-  getLoggedInUsername(): string {
-    return this.authService.loggedInUser;
   }
    
   public onAddPlayer(addForm: NgForm): void {
@@ -53,5 +46,19 @@ export class HeaderComponent implements OnInit {
     }
     container.appendChild(button);
     button.click();
-}
+  }
+
+  closeMenu() {
+    const hideMenu = document.getElementById('closeMenu') as HTMLInputElement;
+    hideMenu.checked = false;
+  }
+
+  showOrHideButtons():boolean {
+    return this.authService.isAuthenticated;
+  }
+
+  getLoggedInUsername(): string {
+    return this.authService.getUserName();
+  }
+
 }
