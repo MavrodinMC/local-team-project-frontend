@@ -1,16 +1,15 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { HttpClient, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { LoginRequestPayload } from '../login.request.payload'
 import { LoginResponse } from '../login.response.payload';
 import { map, tap } from 'rxjs/operators';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements HttpInterceptor {
+export class AuthService {
 
   isAuthenticated: boolean = false;
   private loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus());
@@ -44,19 +43,6 @@ export class AuthService implements HttpInterceptor {
         this.localStorage.store('loginStatus', '1');
         return true;
       }));
-  }
-
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
-      const jwtToken = this.localStorage.retrieve('authenticationToken');
-
-      if(!jwtToken) {
-        return next.handle(req);
-      }
-
-      const validRequest = req.clone(
-        { headers: req.headers.set('Authorization', `Bearer ${jwtToken}`)
-      });
-      return next.handle(validRequest);
   }
 
   getJwtToken() {

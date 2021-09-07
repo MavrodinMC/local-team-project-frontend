@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginRequestPayload: LoginRequestPayload;
   isError: boolean;
-  isLoggedIn: boolean = false;
 
   constructor(private authService: AuthService,
     private router:Router, private toastr: ToastrService) {
@@ -26,7 +25,7 @@ export class LoginComponent implements OnInit {
         username: '',
         password: ''
       }
-     }
+  }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -37,15 +36,15 @@ export class LoginComponent implements OnInit {
 
 
   login() {
+    
     this.loginRequestPayload.username = this.loginForm.get('username').value;
     this.loginRequestPayload.password = this.loginForm
     .get('password').value;
 
     this.authService.login(this.loginRequestPayload)
     .subscribe(data => {
-      if(data) {
+      if (data) {
         this.isError = false;
-        this.isLoggedIn = true;
         this.router.navigateByUrl('');
         this.toastr.success("Login succesfull");
       } else {

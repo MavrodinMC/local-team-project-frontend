@@ -21,6 +21,7 @@ import { ViewtournamentComponent } from './tournament/viewtournament/viewtournam
 import { ViewplayerComponent } from './players/viewplayer/viewplayer.component';
 import { ViewgameComponent } from './viewgame/viewgame.component';
 import { AuthService } from './auth/login/shared/auth.service';
+import { TokenInterceptor } from './token-interceptor';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,9 @@ import { AuthService } from './auth/login/shared/auth.service';
     NgMultiSelectDropDownModule.forRoot()
   ],
   providers:[
-    {provide: HTTP_INTERCEPTORS, useClass: AuthService, multi: true},
+    {
+      provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })
