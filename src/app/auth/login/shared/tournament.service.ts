@@ -44,5 +44,5 @@ export class TournamentService {
 
   deleteTournament(tournamentId: number): Observable<void> {
     return this.httpClient.delete<void>(`http://localhost:8080/tournament/delete/${tournamentId}`);
-}
+  }
 }

@@ -1,0 +1,125 @@
+<div id="main-container">
+
+<div class="add-staff" *ngIf="hideOrShowButtons()">
+    <button type="button" (click)="onOpenModal(null!, 'add')">Add staff member 
+       <span class="sr-only">(current)</span>
+    </button>
+  </div>
+<div class="staffMembersMessage">
+    <h4>Meet our staff members:</h4>
+</div>
+<div class="row">
+    <div class="column"  *ngFor="let staff of staffList">
+      <div class="card">
+        <img src="assets\img\testing.jpg" style="width:50%">
+        <div class="btn-group btn-group-sm" id="editAndDelete" *ngIf="hideOrShowButtons()">
+         <a (click)="onOpenModal(staff, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit" title="Edit"><i class="fa fa-pencil"></i> </a>
+         <a (click)="onOpenModal(staff, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete" title="Delete"><i class="fa fa-times"></i></a>
+      </div>
+        <div class="container">
+          <div id="staffText">
+          <h2>{{staff?.name}}</h2>
+        </div>
+        <div class="staffDetails">
+            <p>Team Role: {{staff?.role}}</p>
+            <p>Age: {{staff?.age}}</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Staff Member Modal -->
+
+<div class="modal fade" id="addStaffModal" tabindex="-1" role="dialog" aria-labelledby="addStaffModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="addStaffModalLabel">Add staff</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body was-validated">
+            <form #addForm="ngForm" (ngSubmit)="onAddStaffMember(addForm)">
+            <div class="form-group">
+               <label for="name">Name</label>
+               <input type="text" ngModel name="name" #name="ngModel"  class="form-control"
+                id="name" required>
+            </div>
+            <div class="form-group">
+               <label for="role">Role</label>
+               <input type="text" ngModel name="role" class="form-control" id="role" required>
+            </div>
+            <div class="form-group">
+               <label for="age">Age</label>
+               <input type="number" ngModel name="age" class="form-control" id="age" required>
+            </div>
+            <div class="modal-footer">
+               <button type="button" id="add-staff-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button [disabled]="addForm.invalid" id="add-staff" type="submit" class="btn btn-primary">Add</button>
+            </div>
+            </form>
+         </div>
+      </div>
+    </div>
+    </div>
+
+    <!--Edit Modal-->
+
+<div class="modal fade" id="updateStaffModal" tabindex="-1" role="dialog" aria-labelledby="staffEditModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="staffEditModalLabel">Edit staff member "{{editStaff?.name}}"</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form #editForm="ngForm">
+               <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" ngModel="{{editStaff?.name}}" name="name" class="form-control" id="name">
+                </div>
+                <div class="form-group">
+                  <label for="role">Role</label>
+                  <input type="text" ngModel="{{editStaff?.role}}" name="role" class="form-control" id="role">
+                </div>
+                <div class="form-group">
+                  <label for="age">Age</label>
+                  <input type="number" ngModel="{{editStaff?.age}}" name="age" class="form-control" id="age">
+                </div>
+                 <input type="hidden" ngModel="{{editStaff?.id}}" name="id" class="form-control" id="id">
+                  <div class="modal-footer" id="edit-btn">
+                   <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                   <button (click)="onUpdateStaffMember(editForm.value)" data-dismiss="modal" class="btn btn-primary">Save</button>
+                </div>
+                </form>
+         </div>
+      </div>
+   </div>
+ </div>
+
+    <!-- Delete Modal -->
+   
+ <div class="modal fade" id="deleteStaffModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="deleteModelLabel">Delete staff</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body" id="del-btn">
+            <p>Are you sure you want to delete staff member "{{deleteStaff?.name}}"?</p>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+               <button (click)="onDeleteStaffMember(deleteStaff?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+            </div>
+         </div>
+      </div>
+   </div>
+ </div>
+</div>    
