@@ -22,6 +22,7 @@ import { ViewplayerComponent } from './players/viewplayer/viewplayer.component';
 import { ViewgameComponent } from './viewgame/viewgame.component';
 import { AuthService } from './auth/login/shared/auth.service';
 import { TokenInterceptor } from './token-interceptor';
+import { StaffComponent } from './staff/staff.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { TokenInterceptor } from './token-interceptor';
     TournamentComponent,
     ViewtournamentComponent,
     ViewplayerComponent,
-    ViewgameComponent
+    ViewgameComponent,
+    StaffComponent
   ],
   imports: [
     BrowserModule,

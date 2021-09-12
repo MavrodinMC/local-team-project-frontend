@@ -8,14 +8,6 @@ export class PlayerService{
 
     constructor(private http:HttpClient) {}
 
-     httpOptionsPlain = {
-        headers: new HttpHeaders({
-          'Accept': 'text/plain',
-          'Content-Type': 'text/plain'
-        }),
-        'responseType': 'text'
-      };
-
         getAllPlayers(senior): Observable<Player[]> {
           let params = new HttpParams()
           .set('isSenior', senior);

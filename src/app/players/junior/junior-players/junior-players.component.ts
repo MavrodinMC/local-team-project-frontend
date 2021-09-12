@@ -53,7 +53,6 @@ export class JuniorPlayersComponent implements OnInit {
         console.log(response);
         this.getAllJuniors(this.senior);
         this.toastr.error("Player deleted!")
-        
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
