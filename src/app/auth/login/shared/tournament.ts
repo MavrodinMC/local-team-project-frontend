@@ -1,8 +1,8 @@
 import { Game } from "./game";
 
 export interface Tournament {
-    id: any;
-    name: string;
+    id: number | any;
+    name: string | any;
     active: boolean;
     games: Game[];
 }
