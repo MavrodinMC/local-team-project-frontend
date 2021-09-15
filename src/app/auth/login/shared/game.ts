@@ -2,6 +2,7 @@
 import { Tournament } from "./tournament";
 
 export interface Game {
+    
     id: number | any;
     date: string | any;
     location: string | any;
