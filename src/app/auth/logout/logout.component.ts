@@ -10,6 +10,7 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./logout.component.css']
 })
 export class LogoutComponent implements OnInit {
+  
 
   constructor(private authService: AuthService,
     private router:Router, private toastr: ToastrService) { 
